@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Majid Moharami | Senior Android Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary-color: #2E7D32; /* Android Green-ish */
-            --text-main: #333333;
-            --text-muted: #666666;
-            --bg-main: #FAFAFA;
-            --bg-card: #FFFFFF;
-            --border-color: #E0E0E0;
-            --font-stack: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --bg-color: #0f172a;        /* Deep slate background */
+            --card-bg: #1e293b;         /* Slightly lighter slate for cards */
+            --text-main: #f8fafc;       /* Crisp white */
+            --text-muted: #94a3b8;      /* Soft grey */
+            --accent: #10b981;          /* Emerald / Android Green */
+            --accent-hover: #059669;
+            --gradient: linear-gradient(135deg, #34d399, #3b82f6); /* Green to Blue */
         }
 
         * {
@@ -22,211 +27,307 @@
         }
 
         body {
-            font-family: var(--font-stack);
-            background-color: var(--bg-main);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header h2 {
-            font-size: 1.25rem;
-            font-weight: 400;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 500;
-            border-bottom: 1px solid transparent;
-            transition: border-bottom 0.2s;
-        }
-
-        .contact-links a:hover {
-            border-bottom: 1px solid white;
-        }
-
-        main {
+        .container {
             max-width: 900px;
-            margin: -2rem auto 2rem;
-            padding: 0 2rem;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        section {
-            background: var(--bg-card);
-            border-radius: 8px;
-            padding: 2rem;
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            /* Gradient Text */
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            font-weight: 400;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .socials a {
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .socials a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* --- Card Sections --- */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         h3 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
             font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .job {
-            margin-bottom: 2rem;
+        h3 i {
+            color: var(--accent);
         }
 
-        .job:last-child {
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* --- Timeline for Experience & Education --- */
+        .timeline-item {
+            position: relative;
+            border-left: 2px solid rgba(16, 185, 129, 0.3);
+            padding-left: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
             margin-bottom: 0;
+            border-left-color: transparent; /* Hides the line for the last item */
         }
 
-        .job-header {
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .timeline-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 0.5rem;
+            flex-wrap: wrap;
         }
 
-        .job-title {
-            font-weight: bold;
-            font-size: 1.2rem;
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
-        .job-meta {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        .timeline-date {
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         ul {
-            padding-left: 1.5rem;
-            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
         }
 
-        li {
-            margin-bottom: 0.5rem;
+        ul li {
+            margin-bottom: 0.75rem;
         }
 
+        ul li strong {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* --- Skills Tags --- */
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 1.5rem;
         }
 
         .skill-category h4 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
             color: var(--text-main);
         }
 
-        .skill-category p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
         }
 
+        .tag {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--accent);
+            color: var(--bg-color);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive --- */
         @media (max-width: 600px) {
-            .job-header {
-                flex-direction: column;
-            }
+            h1 { font-size: 2.5rem; }
+            .timeline-header { flex-direction: column; }
+            section { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Majid Moharami [cite: 1]</h1>
-        <h2>Senior Android Developer [cite: 2]</h2>
-        <div class="contact-links">
-            <a href="mailto:Majid.moharami79@gamil.com">Email [cite: 4]</a>
-            <a href="https://linkedin.com/majid-moharrami" target="_blank" rel="noopener">LinkedIn [cite: 5]</a>
-            <a href="https://github.com/majid-moharrami" target="_blank" rel="noopener">GitHub [cite: 5]</a>
-        </div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Majid Moharami</h1>
+            <h2>Senior Android Developer</h2>
+            <div class="socials">
+                <a href="mailto:Majid.moharami79@gamil.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://linkedin.com/majid-moharrami" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/majid-moharrami" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </header>
 
-    <main>
         <section id="summary">
-            <h3>Summary [cite: 6]</h3>
-            <p>Innovative Senior Android Developer with 5+ years of experience engineering high-traffic applications for mobile and tablet[cite: 7]. Proven track record of powering platforms with 40M+ installs and 20M+ monthly active users[cite: 8]. Specialized in Kotlin and Jetpack Compose, with expertise in architecting scalable MVI/MVVM systems and maintaining a 99.9% crash-free rate at scale[cite: 9]. Proactive in refactoring legacy Java codebases, optimizing performance for millions of users, and partnering with cross-functional teams to drive long-term product excellence[cite: 10].</p>
+            <h3><i class="fa-solid fa-user-tie"></i> Professional Summary</h3>
+            <p>Innovative Senior Android Developer with 5+ years of experience engineering high-traffic applications for mobile and tablet. Proven track record of powering platforms with 40M+ installs and 20M+ monthly active users. Specialized in Kotlin and Jetpack Compose, with expertise in architecting scalable MVI/MVVM systems and maintaining a 99.9% crash-free rate at scale. Proactive in refactoring legacy Java codebases, optimizing performance for millions of users, and partnering with cross-functional teams to drive long-term product excellence.</p>
         </section>
 
         <section id="experience">
-            <h3>Work Experience [cite: 11]</h3>
+            <h3><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
             
-            <div class="job">
-                <div class="job-header">
-                    <span class="job-title">Senior Android Engineer | Myket [cite: 12]</span>
-                    <span class="job-meta">Mar 2021 - Present | Tehran, Iran [cite: 13]</span>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Senior Android Engineer @ Myket</span>
+                    <span class="timeline-date">Mar 2021 – Present | Tehran, Iran</span>
                 </div>
-                <p><em>Leading Android marketplace and digital ecosystem with 40M+ installs and 20M+ MAU, offering a proprietary In-App Purchase SDK and a high-traffic Video-on-Demand (VoD) platform[cite: 14].</em></p>
+                <p>Leading Android marketplace and digital ecosystem with 40M+ installs and 20M+ MAU, offering a proprietary In-App Purchase SDK and a high-traffic Video-on-Demand (VoD) platform.</p>
                 <ul>
-                    <li><strong>VoD Streaming Launch:</strong> Core engineer on the founding team that architected and delivered a scalable, end-to-end video playback system serving millions of users, with a focus on performance, reliability, and seamless playback across diverse devices[cite: 18].</li>
-                    <li><strong>Media3 & UI Modernization:</strong> Migrated from legacy XML and ExoPlayer to Jetpack Compose and Media3, significantly improving UI responsiveness, playback stability, and long-term maintainability[cite: 19].</li>
-                    <li><strong>Core App Store Systems:</strong> Owned and evolved the high-concurrency download manager and background update engine, utilizing PackageInstaller APIs to ensure reliable app delivery across a highly fragmented Android ecosystem[cite: 20].</li>
-                    <li><strong>Architecture & Modularization:</strong> Drove the transformation from a monolithic codebase to a multi-module Clean Architecture, defining dependency boundaries that reduced build times and enabled efficient parallel development across teams[cite: 21].</li>
-                    <li><strong>Monetization & IAP SDK:</strong> Maintained and enhanced the proprietary in-app purchase SDK, optimizing billing flows, transaction integrity, and developer experience for thousands of third-party applications[cite: 22].</li>
-                    <li><strong>Legacy Transformation:</strong> Reduced technical debt by migrating 100K+ lines of Java to Kotlin and introducing reactive programming with Coroutines and Flow, improving app responsiveness and code clarity[cite: 23].</li>
-                    <li><strong>Quality & Reliability:</strong> Sustained a 99.9% crash-free rate across 20M+ MAU through rigorous code reviews, automated testing, and proactive monitoring with Sentry and Firebase[cite: 24].</li>
+                    <li><strong>VoD Streaming Launch:</strong> Core engineer on the founding team that architected and delivered a scalable, end-to-end video playback system serving millions of users, with a focus on performance, reliability, and seamless playback across diverse devices.</li>
+                    <li><strong>Media3 & UI Modernization:</strong> Migrated from legacy XML and ExoPlayer to Jetpack Compose and Media3, significantly improving UI responsiveness, playback stability, and long-term maintainability.</li>
+                    <li><strong>Core App Store Systems:</strong> Owned and evolved the high-concurrency download manager and background update engine, utilizing PackageInstaller APIs to ensure reliable app delivery across a highly fragmented Android ecosystem.</li>
+                    <li><strong>Architecture & Modularization:</strong> Drove the transformation from a monolithic codebase to a multi-module Clean Architecture, defining dependency boundaries that reduced build times and enabled efficient parallel development across teams.</li>
+                    <li><strong>Monetization & IAP SDK:</strong> Maintained and enhanced the proprietary in-app purchase SDK, optimizing billing flows, transaction integrity, and developer experience for thousands of third-party applications.</li>
+                    <li><strong>Legacy Transformation:</strong> Reduced technical debt by migrating 100K+ lines of Java to Kotlin and introducing reactive programming with Coroutines and Flow, improving app responsiveness and code clarity.</li>
+                    <li><strong>Quality & Reliability:</strong> Sustained a 99.9% crash-free rate across 20M+ MAU through rigorous code reviews, automated testing, and proactive monitoring with Sentry and Firebase.</li>
                 </ul>
             </div>
         </section>
 
         <section id="skills">
-            <h3>Technical Skills [cite: 25, 26]</h3>
+            <h3><i class="fa-solid fa-code"></i> Technical Expertise</h3>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h4>Languages & Core [cite: 27]</h4>
-                    <p>Kotlin, Java [cite: 27]</p>
+                    <h4>Languages & Core Android</h4>
+                    <div class="tags">
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Jetpack Compose</span>
+                        <span class="tag">Android SDK</span>
+                        <span class="tag">Multi-module Projects</span>
+                    </div>
                 </div>
                 <div class="skill-category">
-                    <h4>Modern Android [cite: 28]</h4>
-                    <p>Jetpack Compose, Android SDK (Mobile, Tablet), Gradle, Multi-module Projects [cite: 28]</p>
+                    <h4>Architecture & Design Patterns</h4>
+                    <div class="tags">
+                        <span class="tag">MVI</span>
+                        <span class="tag">MVVM</span>
+                        <span class="tag">Clean Architecture</span>
+                        <span class="tag">SOLID</span>
+                        <span class="tag">Hilt / Dagger 2</span>
+                    </div>
                 </div>
                 <div class="skill-category">
-                    <h4>Architecture & DI [cite: 29]</h4>
-                    <p>MVVM, MVI, Clean Architecture, SOLID, Hilt/Dagger 2, Modularization [cite: 29]</p>
-                </div>
-                <div class="skill-category">
-                    <h4>Asynchronous & Networking [cite: 31]</h4>
-                    <p>Coroutines, Flow, Channels, Retrofit, OkHttp, WebSockets, REST API [cite: 31]</p>
+                    <h4>Asynchronous & Networking</h4>
+                    <div class="tags">
+                        <span class="tag">Coroutines</span>
+                        <span class="tag">Flow & Channels</span>
+                        <span class="tag">Retrofit</span>
+                        <span class="tag">OkHttp</span>
+                        <span class="tag">WebSockets</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="education">
-            <h3>Education [cite: 37]</h3>
+            <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
             
-            <div class="job">
-                <div class="job-header">
-                    <span class="job-title">Bachelor of Computer Engineering | Azad University [cite: 38]</span>
-                    <span class="job-meta">2018 - 2022 [cite: 42]</span>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Bachelor of Computer Engineering</span>
+                    <span class="timeline-date">2018 – 2022</span>
                 </div>
+                <p>Azad University</p>
                 <ul>
-                    <li>CS Fundamentals: Data Structures, Algorithms, and System Design[cite: 39].</li>
-                    <li>Full-Stack Project: Engineered an E-commerce site (WordPress)[cite: 40].</li>
+                    <li>CS Fundamentals: Data Structures, Algorithms, and System Design.</li>
+                    <li>Full-Stack Project: Engineered an E-commerce site.</li>
                 </ul>
             </div>
 
-            <div class="job">
-                <div class="job-header">
-                    <span class="job-title">Android Development Bootcamp | Maktab Sharif [cite: 41]</span>
-                    <span class="job-meta">2020 - 2021 [cite: 43]</span>
+            <div class="timeline-item" style="border-left-color: transparent;">
+                <div class="timeline-header">
+                    <span class="timeline-title">Android Development Bootcamp</span>
+                    <span class="timeline-date">2020 – 2021</span>
                 </div>
+                <p>Maktab Sharif</p>
                 <ul>
-                    <li>Intensive 400+ hour project-based program focused on modern Android architecture and clean code[cite: 44].</li>
-                    <li>Mastered Java/Kotlin fundamentals, Android SDK, and UI/UX principles from scratch to advanced implementation[cite: 45].</li>
+                    <li>Intensive 400+ hour project-based program focused on modern Android architecture and clean code.</li>
+                    <li>Mastered Java/Kotlin fundamentals, Android SDK, and UI/UX principles from scratch.</li>
                 </ul>
             </div>
         </section>
-    </main>
+    </div>
 
 </body>
 </html>

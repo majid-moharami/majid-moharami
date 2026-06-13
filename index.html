@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majid Moharami | Senior Android Developer</title>
+    <style>
+        :root {
+            --primary-color: #2E7D32; /* Android Green-ish */
+            --text-main: #333333;
+            --text-muted: #666666;
+            --bg-main: #FAFAFA;
+            --bg-card: #FFFFFF;
+            --border-color: #E0E0E0;
+            --font-stack: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.2s;
+        }
+
+        .contact-links a:hover {
+            border-bottom: 1px solid white;
+        }
+
+        main {
+            max-width: 900px;
+            margin: -2rem auto 2rem;
+            padding: 0 2rem;
+        }
+
+        section {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .job {
+            margin-bottom: 2rem;
+        }
+
+        .job:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .job-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .skill-category p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .job-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Majid Moharami [cite: 1]</h1>
+        <h2>Senior Android Developer [cite: 2]</h2>
+        <div class="contact-links">
+            <a href="mailto:Majid.moharami79@gamil.com">Email [cite: 4]</a>
+            <a href="https://linkedin.com/majid-moharrami" target="_blank" rel="noopener">LinkedIn [cite: 5]</a>
+            <a href="https://github.com/majid-moharrami" target="_blank" rel="noopener">GitHub [cite: 5]</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="summary">
+            <h3>Summary [cite: 6]</h3>
+            <p>Innovative Senior Android Developer with 5+ years of experience engineering high-traffic applications for mobile and tablet[cite: 7]. Proven track record of powering platforms with 40M+ installs and 20M+ monthly active users[cite: 8]. Specialized in Kotlin and Jetpack Compose, with expertise in architecting scalable MVI/MVVM systems and maintaining a 99.9% crash-free rate at scale[cite: 9]. Proactive in refactoring legacy Java codebases, optimizing performance for millions of users, and partnering with cross-functional teams to drive long-term product excellence[cite: 10].</p>
+        </section>
+
+        <section id="experience">
+            <h3>Work Experience [cite: 11]</h3>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Senior Android Engineer | Myket [cite: 12]</span>
+                    <span class="job-meta">Mar 2021 - Present | Tehran, Iran [cite: 13]</span>
+                </div>
+                <p><em>Leading Android marketplace and digital ecosystem with 40M+ installs and 20M+ MAU, offering a proprietary In-App Purchase SDK and a high-traffic Video-on-Demand (VoD) platform[cite: 14].</em></p>
+                <ul>
+                    <li><strong>VoD Streaming Launch:</strong> Core engineer on the founding team that architected and delivered a scalable, end-to-end video playback system serving millions of users, with a focus on performance, reliability, and seamless playback across diverse devices[cite: 18].</li>
+                    <li><strong>Media3 & UI Modernization:</strong> Migrated from legacy XML and ExoPlayer to Jetpack Compose and Media3, significantly improving UI responsiveness, playback stability, and long-term maintainability[cite: 19].</li>
+                    <li><strong>Core App Store Systems:</strong> Owned and evolved the high-concurrency download manager and background update engine, utilizing PackageInstaller APIs to ensure reliable app delivery across a highly fragmented Android ecosystem[cite: 20].</li>
+                    <li><strong>Architecture & Modularization:</strong> Drove the transformation from a monolithic codebase to a multi-module Clean Architecture, defining dependency boundaries that reduced build times and enabled efficient parallel development across teams[cite: 21].</li>
+                    <li><strong>Monetization & IAP SDK:</strong> Maintained and enhanced the proprietary in-app purchase SDK, optimizing billing flows, transaction integrity, and developer experience for thousands of third-party applications[cite: 22].</li>
+                    <li><strong>Legacy Transformation:</strong> Reduced technical debt by migrating 100K+ lines of Java to Kotlin and introducing reactive programming with Coroutines and Flow, improving app responsiveness and code clarity[cite: 23].</li>
+                    <li><strong>Quality & Reliability:</strong> Sustained a 99.9% crash-free rate across 20M+ MAU through rigorous code reviews, automated testing, and proactive monitoring with Sentry and Firebase[cite: 24].</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h3>Technical Skills [cite: 25, 26]</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Languages & Core [cite: 27]</h4>
+                    <p>Kotlin, Java [cite: 27]</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Modern Android [cite: 28]</h4>
+                    <p>Jetpack Compose, Android SDK (Mobile, Tablet), Gradle, Multi-module Projects [cite: 28]</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Architecture & DI [cite: 29]</h4>
+                    <p>MVVM, MVI, Clean Architecture, SOLID, Hilt/Dagger 2, Modularization [cite: 29]</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Asynchronous & Networking [cite: 31]</h4>
+                    <p>Coroutines, Flow, Channels, Retrofit, OkHttp, WebSockets, REST API [cite: 31]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h3>Education [cite: 37]</h3>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Bachelor of Computer Engineering | Azad University [cite: 38]</span>
+                    <span class="job-meta">2018 - 2022 [cite: 42]</span>
+                </div>
+                <ul>
+                    <li>CS Fundamentals: Data Structures, Algorithms, and System Design[cite: 39].</li>
+                    <li>Full-Stack Project: Engineered an E-commerce site (WordPress)[cite: 40].</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Android Development Bootcamp | Maktab Sharif [cite: 41]</span>
+                    <span class="job-meta">2020 - 2021 [cite: 43]</span>
+                </div>
+                <ul>
+                    <li>Intensive 400+ hour project-based program focused on modern Android architecture and clean code[cite: 44].</li>
+                    <li>Mastered Java/Kotlin fundamentals, Android SDK, and UI/UX principles from scratch to advanced implementation[cite: 45].</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

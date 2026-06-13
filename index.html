@@ -6,19 +6,20 @@
     <title>Majid Moharami | Senior Android Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-page: #F0F4F8; /* Soft, cool off-white */
-            --bg-card: rgba(255, 255, 255, 0.85);
-            --text-main: #1E293B; /* Deep Slate */
-            --text-muted: #64748B;
-            --accent-primary: #0F766E; /* Sophisticated Teal */
-            --accent-secondary: #0EA5E9; /* Ocean Blue */
-            --surface-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.05);
-            --border-subtle: rgba(255, 255, 255, 1);
+            --bg-base: #060913;
+            --card-bg: rgba(13, 17, 30, 0.7);
+            --card-border: rgba(61, 220, 132, 0.2);
+            --text-main: #E2E8F0;
+            --text-muted: #94A3B8;
+            --android-green: #3DDC84;
+            --electric-cyan: #00E5FF;
+            --neon-glow: 0 0 15px rgba(61, 220, 132, 0.4);
+            --cyan-glow: 0 0 15px rgba(0, 229, 255, 0.4);
         }
 
         * {
@@ -28,153 +29,130 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-page);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-base);
             color: var(--text-main);
             line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Organic Background Blobs for a "Super UI" feel */
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
+        /* --- Live Background Canvas --- */
+        #networkCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
-            opacity: 0.4;
-            animation: float 10s infinite ease-in-out alternate;
-        }
-
-        .blob-1 {
-            top: -10%; left: -10%;
-            width: 500px; height: 500px;
-            background: #99F6E4; /* Soft Mint */
-        }
-
-        .blob-2 {
-            top: 40%; right: -15%;
-            width: 400px; height: 400px;
-            background: #BAE6FD; /* Soft Sky */
-            animation-delay: -5s;
-        }
-
-        .blob-3 {
-            bottom: -10%; left: 20%;
-            width: 600px; height: 600px;
-            background: #DDD6FE; /* Soft Lavender */
-            animation-delay: -2s;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.1); }
+            background: radial-gradient(circle at center, #0B1120 0%, #03040B 100%);
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* --- Floating Header --- */
+        /* --- Typography & Headers --- */
         header {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 2px solid var(--border-subtle);
-            border-radius: 40px;
-            padding: 3rem;
             text-align: center;
-            box-shadow: var(--surface-shadow);
-            margin-bottom: 3rem;
-            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 2rem 0 4rem;
         }
 
         h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 4rem;
+            font-weight: 700;
             letter-spacing: -1px;
-            color: var(--text-main);
             margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: var(--neon-glow);
         }
 
         h2 {
-            font-size: 1.4rem;
-            color: var(--accent-primary);
-            font-weight: 600;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.2rem;
+            color: var(--android-green);
+            font-weight: 500;
             margin-bottom: 2rem;
         }
 
         .socials {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .socials a {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 100px; /* Pill shape */
-            background: #F1F5F9;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
             color: var(--text-main);
+            font-size: 1.4rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
         }
 
         .socials a:hover {
-            background: var(--text-main);
-            color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.1);
+            border-color: var(--android-green);
+            color: var(--bg-base);
+            background: var(--android-green);
+            transform: translateY(-8px) rotate(5deg);
+            box-shadow: var(--neon-glow);
         }
 
-        /* --- Soft Cards --- */
+        /* --- Tech Cards --- */
         section {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 32px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
             padding: 3rem;
-            margin-bottom: 2.5rem;
-            border: 2px solid var(--border-subtle);
-            box-shadow: var(--surface-shadow);
-            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+            margin-bottom: 3rem;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            /* Initial state for scroll animation */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        section:nth-child(2) { animation-delay: 0.1s; }
-        section:nth-child(3) { animation-delay: 0.2s; }
-        section:nth-child(4) { animation-delay: 0.3s; }
-        section:nth-child(5) { animation-delay: 0.4s; }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section:hover {
+            border-color: rgba(0, 229, 255, 0.5);
+            box-shadow: var(--cyan-glow);
+        }
 
         h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 600;
             margin-bottom: 2rem;
             display: flex;
             align-items: center;
             gap: 1rem;
-            color: var(--text-main);
+            color: #ffffff;
         }
 
         h3 i {
-            background: #E0F2FE;
-            color: var(--accent-secondary);
-            padding: 0.75rem;
-            border-radius: 16px;
-            font-size: 1.2rem;
+            color: var(--electric-cyan);
+            font-size: 1.4rem;
+            text-shadow: var(--cyan-glow);
         }
 
         p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            font-weight: 500;
+            font-size: 1.05rem;
         }
 
         /* --- Video Component --- */
@@ -182,11 +160,11 @@
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
-            border-radius: 24px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
-            border: 4px solid #ffffff;
-            background: #E2E8F0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            background: #000;
         }
 
         .video-wrapper iframe {
@@ -198,113 +176,85 @@
             border: 0;
         }
 
-        /* --- Fluid Timeline --- */
+        /* --- Interactive Timeline --- */
         .timeline-item {
             position: relative;
-            padding-left: 3rem;
-            margin-bottom: 3.5rem;
+            padding-left: 2.5rem;
+            margin-bottom: 3rem;
+            border-left: 2px solid rgba(255,255,255,0.05);
         }
 
         .timeline-item:last-child {
             margin-bottom: 0;
         }
 
-        /* Continuous line */
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 11px;
-            top: 0;
-            bottom: -3.5rem;
-            width: 2px;
-            background: #E2E8F0;
-        }
-
-        .timeline-item:last-child::before {
-            bottom: 0;
-        }
-
-        /* Indicator dot */
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 24px;
-            height: 24px;
-            background: #ffffff;
-            border: 4px solid var(--accent-primary);
+            left: -7px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--bg-base);
+            border: 2px solid var(--electric-cyan);
             border-radius: 50%;
             transition: all 0.3s ease;
         }
 
-        .timeline-item:hover::after {
-            transform: scale(1.2);
-            background: var(--accent-primary);
+        .timeline-item:hover::before {
+            background-color: var(--electric-cyan);
+            box-shadow: var(--cyan-glow);
         }
 
         .timeline-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             flex-wrap: wrap;
         }
 
         .timeline-title {
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: var(--text-main);
         }
 
         .timeline-date {
-            color: var(--accent-primary);
-            font-size: 0.95rem;
-            font-weight: 700;
-            background: #CCFBF1;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
+            font-family: 'Fira Code', monospace;
+            color: var(--android-green);
+            font-size: 0.85rem;
         }
 
         ul {
-            padding-left: 0;
-            list-style: none;
-            margin-top: 1.5rem;
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
         }
 
         ul li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        ul li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent-secondary);
-            font-weight: bold;
+            margin-bottom: 0.8rem;
         }
 
         ul li strong {
             color: var(--text-main);
-            font-weight: 700;
+            font-weight: 500;
         }
 
-        /* --- Material You Chips (Skills) --- */
+        /* --- Cyber Skills Tags --- */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .skill-category h4 {
             font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-main);
-            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
         }
 
         .tags {
@@ -314,113 +264,109 @@
         }
 
         .tag {
-            background: #F8FAFC;
+            background: rgba(0, 0, 0, 0.4);
             color: var(--text-main);
-            padding: 0.6rem 1.2rem;
-            border-radius: 100px; /* Pill shape */
-            font-size: 0.95rem;
-            font-weight: 600;
-            border: 1px solid #E2E8F0;
-            box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: default;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tag::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(61, 220, 132, 0.2), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .tag:hover::before {
+            left: 100%;
         }
 
         .tag:hover {
-            background: var(--text-main);
-            color: #ffffff;
-            border-color: var(--text-main);
+            border-color: var(--android-green);
+            color: var(--android-green);
+            box-shadow: 0 0 10px rgba(61, 220, 132, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(15, 23, 42, 0.1);
-        }
-
-        /* --- Animations --- */
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
-            header { padding: 2rem 1.5rem; border-radius: 24px; }
-            h1 { font-size: 2.5rem; }
-            section { padding: 2rem 1.5rem; border-radius: 24px; }
+            h1 { font-size: 2.8rem; }
+            section { padding: 2rem 1.5rem; }
             .timeline-header { flex-direction: column; gap: 0.5rem; }
-            .socials { flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
 
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
+    <canvas id="networkCanvas"></canvas>
 
     <div class="container">
         <header>
             <h1>Majid Moharami</h1>
-            <h2>Senior Android Developer</h2>
+            <h2><span id="typewriter"></span><span class="cursor">_</span></h2>
             <div class="socials">
-                <a href="mailto:Majid.moharami79@gmail.com"><i class="fa-solid fa-envelope"></i> Email Me</a>
-                <a href="https://www.linkedin.com/in/majid-moharami-02a0a71bb/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/majid-moharami" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="mailto:Majid.moharami79@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/majid-moharami-02a0a71bb/" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/majid-moharami" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
         </header>
 
-        <section id="summary">
-            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Professional Summary</h3>
-            <p>Innovative Senior Android Developer with 5+ years of experience engineering high-traffic applications for mobile and tablet. Proven track record of powering platforms with 40M+ installs and 20M+ monthly active users. Specialized in Kotlin and Jetpack Compose, with expertise in architecting scalable MVI/MVVM systems and maintaining a 99.9% crash-free rate at scale. Proactive in refactoring legacy Java codebases, optimizing performance for millions of users, and partnering with cross-functional teams to drive long-term product excellence.</p>
+        <section class="animate-on-scroll">
+            <h3><i class="fa-solid fa-microchip"></i> System Architecture & Summary</h3>
+            <p>Innovative Senior Android Developer with 5+ years of experience engineering high-traffic applications for mobile and tablet ecosystems. Proven track record of powering platforms with 40M+ installs and 20M+ monthly active users. Specialized in Kotlin and Jetpack Compose, with expertise in architecting scalable MVI/MVVM systems and maintaining a 99.9% crash-free rate at scale. Proactive in refactoring legacy Java codebases, optimizing performance for millions of users, and partnering with cross-functional teams to drive long-term product excellence.</p>
         </section>
 
-        <section id="featured-work">
-            <h3><i class="fa-solid fa-circle-play"></i> Featured Work</h3>
-            <p style="margin-bottom: 2rem;">A brief demonstration of the high-traffic Video-on-Demand (VoD) platform and architecture I helped build for the Myket app.</p>
+        <section class="animate-on-scroll">
+            <h3><i class="fa-solid fa-play"></i> Module Execution: Myket VoD</h3>
+            <p style="margin-bottom: 1.5rem;">A brief demonstration of the high-traffic Video-on-Demand (VoD) platform and playback architecture I engineered.</p>
             <div class="video-wrapper">
-                <iframe src="YOUR_GOOGLE_DRIVE_PREVIEW_LINK_HERE" allow="autoplay" allowfullscreen></iframe>
+                <iframe src="https://drive.google.com/file/d/10dsoq2RLvREBtUyPPu2jLeEHIgXyLzry/preview" allow="autoplay" allowfullscreen></iframe>
             </div>
         </section>
 
-        <section id="experience">
-            <h3><i class="fa-solid fa-layer-group"></i> Work Experience</h3>
+        <section class="animate-on-scroll">
+            <h3><i class="fa-solid fa-terminal"></i> Runtime Experience</h3>
             
             <div class="timeline-item">
                 <div class="timeline-header">
                     <span class="timeline-title">Senior Android Engineer @ Myket</span>
                     <span class="timeline-date">Mar 2021 – Present</span>
                 </div>
-                <p>Leading Android marketplace and digital ecosystem in Iran with 40M+ installs and 20M+ MAU.</p>
+                <p>Engineering the core infrastructure for Iran's leading Android marketplace and digital ecosystem with 40M+ installs and 20M+ MAU.</p>
                 <ul>
                     <li><strong>VoD Streaming Launch:</strong> Core engineer on the founding team that architected and delivered a scalable, end-to-end video playback system serving millions of users.</li>
                     <li><strong>Media3 & UI Modernization:</strong> Migrated from legacy XML and ExoPlayer to Jetpack Compose and Media3, significantly improving UI responsiveness and playback stability.</li>
                     <li><strong>Core App Store Systems:</strong> Owned and evolved the high-concurrency download manager and background update engine utilizing PackageInstaller APIs.</li>
-                    <li><strong>Architecture & Modularization:</strong> Drove the transformation from a monolithic codebase to a multi-module Clean Architecture, reducing build times.</li>
-                    <li><strong>Monetization & IAP SDK:</strong> Maintained and enhanced the proprietary in-app purchase SDK.</li>
-                    <li><strong>Legacy Transformation:</strong> Reduced technical debt by migrating 100K+ lines of Java to Kotlin and introducing Coroutines and Flow.</li>
-                    <li><strong>Quality & Reliability:</strong> Sustained a 99.9% crash-free rate across 20M+ MAU through rigorous code reviews and monitoring with Sentry and Firebase.</li>
+                    <li><strong>Architecture & Modularization:</strong> Drove the transformation from a monolithic codebase to a multi-module Clean Architecture, defining dependency boundaries that reduced build times.</li>
+                    <li><strong>Monetization & IAP SDK:</strong> Maintained and enhanced the proprietary in-app purchase SDK, optimizing billing flows.</li>
+                    <li><strong>Legacy Transformation:</strong> Reduced technical debt by migrating 100K+ lines of Java to Kotlin and introducing reactive programming with Coroutines and Flow.</li>
+                    <li><strong>Quality & Reliability:</strong> Sustained a 99.9% crash-free rate across 20M+ MAU through rigorous code reviews, automated testing, and proactive monitoring with Sentry and Firebase.</li>
                 </ul>
             </div>
         </section>
 
-        <section id="skills">
-            <h3><i class="fa-solid fa-code"></i> Technical Expertise</h3>
+        <section class="animate-on-scroll">
+            <h3><i class="fa-solid fa-network-wired"></i> Tech Stack</h3>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h4>Languages & Core Android</h4>
+                    <h4>Core Languages</h4>
                     <div class="tags">
                         <span class="tag">Kotlin</span>
                         <span class="tag">Java</span>
                         <span class="tag">Jetpack Compose</span>
                         <span class="tag">Android SDK</span>
-                        <span class="tag">Multi-module Projects</span>
+                        <span class="tag">Multi-module Setup</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h4>Architecture & Design Patterns</h4>
+                    <h4>Architecture</h4>
                     <div class="tags">
                         <span class="tag">MVI</span>
                         <span class="tag">MVVM</span>
@@ -430,7 +376,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h4>Asynchronous & Networking</h4>
+                    <h4>Async & Network</h4>
                     <div class="tags">
                         <span class="tag">Coroutines</span>
                         <span class="tag">Flow & Channels</span>
@@ -442,8 +388,8 @@
             </div>
         </section>
 
-        <section id="education">
-            <h3><i class="fa-solid fa-book-open"></i> Education</h3>
+        <section class="animate-on-scroll">
+            <h3><i class="fa-solid fa-graduation-cap"></i> Education Log</h3>
             
             <div class="timeline-item">
                 <div class="timeline-header">
@@ -453,7 +399,7 @@
                 <p>Azad University</p>
                 <ul>
                     <li>CS Fundamentals: Data Structures, Algorithms, and System Design.</li>
-                    <li>Full-Stack Project: Engineered an E-commerce site.</li>
+                    <li>Full-Stack Project: Engineered an E-commerce framework.</li>
                 </ul>
             </div>
 
@@ -471,5 +417,101 @@
         </section>
     </div>
 
+    <script>
+        // 1. Typewriter Effect
+        const text = "> Senior Android Developer";
+        const typewriterElement = document.getElementById("typewriter");
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                typewriterElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        window.onload = typeWriter;
+
+        // 2. Scroll Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate-on-scroll').forEach((section) => {
+            observer.observe(section);
+        });
+
+        // 3. Canvas Particle Network (Live Background)
+        const canvas = document.getElementById('networkCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
+
+        function initCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            // Number of particles based on screen size
+            const particleCount = Math.floor(width * height / 15000);
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    radius: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(61, 220, 132, 0.5)'; // Android Green
+            ctx.lineWidth = 0.5;
+
+            particles.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Bounce off edges
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw lines between close particles
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 229, 255, ${1 - distance / 120})`; // Electric Cyan fade
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(drawParticles);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        drawParticles();
+    </script>
 </body>
 </html>

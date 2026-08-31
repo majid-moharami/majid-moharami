@@ -56,6 +56,8 @@ function buildDeveloperSvg() {
       .status-opp-txt { fill: ${ACCENT_GREEN}; font-size: 10px; font-weight: 700; font-family: ui-monospace, monospace; }
       .opp-dot { fill: ${ACCENT_GREEN}; animation: pulseDot 2s infinite; }
       .anim-row { animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      a { text-decoration: none; cursor: pointer; }
+      a:hover .contact-box { stroke: ${ACCENT_CYAN}; fill: #1c2433; }
     </style>
   </defs>
 
@@ -135,15 +137,19 @@ function buildDeveloperSvg() {
   <g class="anim-row" style="animation-delay: 0.25s">
     <text x="${PAD_X}" y="${TITLEBAR_H + 258}" class="sec-title">DIRECT RECRUITER CONTACT</text>
 
-    <!-- Email Chip -->
-    <rect x="${PAD_X}" y="${TITLEBAR_H + 268}" width="380" height="34" class="contact-box" />
-    <text x="${PAD_X + 12}" y="${TITLEBAR_H + 289}" class="contact-lbl">EMAIL:</text>
-    <text x="${PAD_X + 70}" y="${TITLEBAR_H + 289}" class="contact-val">Majid.moharami79@gmail.com</text>
+    <!-- Email Chip Link -->
+    <a href="mailto:Majid.moharami79@gmail.com" target="_blank">
+      <rect x="${PAD_X}" y="${TITLEBAR_H + 268}" width="380" height="34" class="contact-box" />
+      <text x="${PAD_X + 12}" y="${TITLEBAR_H + 289}" class="contact-lbl">EMAIL:</text>
+      <text x="${PAD_X + 70}" y="${TITLEBAR_H + 289}" class="contact-val">Majid.moharami79@gmail.com</text>
+    </a>
 
-    <!-- LinkedIn Chip -->
-    <rect x="${PAD_X}" y="${TITLEBAR_H + 308}" width="380" height="34" class="contact-box" />
-    <text x="${PAD_X + 12}" y="${TITLEBAR_H + 329}" class="contact-lbl">LINKEDIN:</text>
-    <text x="${PAD_X + 70}" y="${TITLEBAR_H + 329}" class="contact-val">linkedin.com/in/majid-moharami</text>
+    <!-- LinkedIn Chip Link -->
+    <a href="https://www.linkedin.com/in/majid-moharami-02a0a71bb/" target="_blank">
+      <rect x="${PAD_X}" y="${TITLEBAR_H + 308}" width="380" height="34" class="contact-box" />
+      <text x="${PAD_X + 12}" y="${TITLEBAR_H + 329}" class="contact-lbl">LINKEDIN:</text>
+      <text x="${PAD_X + 70}" y="${TITLEBAR_H + 329}" class="contact-val">linkedin.com/in/majid-moharami</text>
+    </a>
 
     <!-- Palette dots at bottom -->
     <g>
@@ -158,9 +164,11 @@ function buildDeveloperSvg() {
     </g>
 
     <!-- Opportunities Pill -->
-    <rect x="${WIDTH - 196}" y="${HEIGHT - 38}" width="176" height="26" class="status-pill-opp" />
-    <circle cx="${WIDTH - 182}" cy="${HEIGHT - 25}" r="4" class="opp-dot" />
-    <text x="${WIDTH - 170}" y="${HEIGHT - 21}" class="status-opp-txt">Open to Opportunities</text>
+    <a href="mailto:Majid.moharami79@gmail.com" target="_blank">
+      <rect x="${WIDTH - 196}" y="${HEIGHT - 38}" width="176" height="26" class="status-pill-opp" />
+      <circle cx="${WIDTH - 182}" cy="${HEIGHT - 25}" r="4" class="opp-dot" />
+      <text x="${WIDTH - 170}" y="${HEIGHT - 21}" class="status-opp-txt">Open to Opportunities</text>
+    </a>
   </g>
 </svg>`;
 }

@@ -26,12 +26,17 @@ function buildDeveloperSvg() {
   <defs>
     <linearGradient id="devBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0a0e14" />
-      <stop offset="100%" stop-color="#0d1117" />
+      <stop offset="60%" stop-color="#0d1117" />
+      <stop offset="100%" stop-color="#111827" />
     </linearGradient>
     <style>
       @keyframes fadeUp {
         0% { opacity: 0; transform: translateY(6px); }
         100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes pulseDot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.9); }
       }
       .bg { fill: url(#devBg); stroke: ${BORDER_COLOR}; stroke-width: 1; rx: 10px; }
       .titlebar { fill: ${BG_CARD}; }
@@ -41,12 +46,15 @@ function buildDeveloperSvg() {
       .dev-name { fill: ${TEXT}; font-size: 17px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, monospace; }
       .dev-title { fill: ${ACCENT_GREEN}; font-size: 12px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, monospace; }
       .dev-company { fill: ${ACCENT_GOLD}; font-size: 11px; font-weight: 500; }
-      .bio-text { fill: #c9d1d9; font-size: 11px; font-weight: 400; line-height: 1.5; }
-      .badge-chip { fill: #161b22; stroke: #30363d; stroke-width: 1; rx: 4px; }
+      .bio-text { fill: #c9d1d9; font-size: 11px; font-weight: 400; }
+      .badge-chip { fill: #161b22; stroke: #30363d; stroke-width: 1; rx: 5px; }
       .badge-txt { fill: #e6edf3; font-size: 10px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, monospace; }
       .contact-box { fill: #161b22; stroke: #30363d; stroke-width: 1; rx: 6px; }
       .contact-lbl { fill: #8b949e; font-size: 10px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, monospace; }
       .contact-val { fill: ${ACCENT_CYAN}; font-size: 10.5px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, monospace; }
+      .status-pill-opp { fill: #238636; fill-opacity: 0.15; stroke: ${ACCENT_GREEN}; stroke-width: 1; rx: 12px; }
+      .status-opp-txt { fill: ${ACCENT_GREEN}; font-size: 10px; font-weight: 700; font-family: ui-monospace, monospace; }
+      .opp-dot { fill: ${ACCENT_GREEN}; animation: pulseDot 2s infinite; }
       .anim-row { animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
     </style>
   </defs>
@@ -71,7 +79,7 @@ function buildDeveloperSvg() {
   <g class="anim-row" style="animation-delay: 0.05s">
     <text x="${PAD_X}" y="${TITLEBAR_H + 26}" class="dev-name">Majid Moharami</text>
     <text x="${PAD_X}" y="${TITLEBAR_H + 46}" class="dev-title">Senior Android Developer • Mobile Architect</text>
-    <text x="${PAD_X}" y="${TITLEBAR_H + 64}" class="dev-company">🏢 Myket — Top Android Marketplace (20M+ MAU)</text>
+    <text x="${PAD_X}" y="${TITLEBAR_H + 64}" class="dev-company">🏢 Myket — Leading Android App Store (20M+ MAU)</text>
     <text x="${PAD_X}" y="${TITLEBAR_H + 82}" class="bio-text">Specialized in building high-concurrency, reactive Android</text>
     <text x="${PAD_X}" y="${TITLEBAR_H + 98}" class="bio-text">architectures with 99.8%+ crash-free reliability at scale.</text>
   </g>
@@ -148,7 +156,11 @@ function buildDeveloperSvg() {
       <circle cx="${PAD_X + 142}" cy="${HEIGHT - 24}" r="5.5" fill="#a855f7" />
       <circle cx="${PAD_X + 164}" cy="${HEIGHT - 24}" r="5.5" fill="#ec4899" />
     </g>
-    <text x="${WIDTH - PAD_X}" y="${HEIGHT - 20}" text-anchor="end" fill="${ACCENT_GREEN}" font-size="10px" font-weight="700" font-family="ui-monospace, monospace">&#x25CF; Open to Opportunities</text>
+
+    <!-- Opportunities Pill -->
+    <rect x="${WIDTH - 196}" y="${HEIGHT - 38}" width="176" height="26" class="status-pill-opp" />
+    <circle cx="${WIDTH - 182}" cy="${HEIGHT - 25}" r="4" class="opp-dot" />
+    <text x="${WIDTH - 170}" y="${HEIGHT - 21}" class="status-opp-txt">Open to Opportunities</text>
   </g>
 </svg>`;
 }

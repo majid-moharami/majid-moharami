@@ -9,69 +9,65 @@ const OUT_PATH = path.join(__dirname, '..', 'info-card.svg');
 
 const WIDTH = 490;
 const HEIGHT = 490;
-const PAD_X = 24;
+const PAD_X = 22;
 const TITLEBAR_H = 34;
 
-const BG = "#0a0e14";
 const BG_CARD = "#0d1117";
 const BORDER_COLOR = "#30363d";
-const KEY_COLOR = "#79c0ff";
-const VAL_COLOR = "#e6edf3";
-const MUTED = "#7d8590";
-const ACCENT_GREEN = "#39d353";
-const ACCENT_PURPLE = "#d2a8ff";
-const ACCENT_GOLD = "#e3b341";
-const ACCENT_CYAN = "#58a6ff";
+const MUTED = "#64748b";
 
-const INFO_ROWS = [
-  { type: "header", text: "majid@android-station" },
+const ROWS = [
+  { type: "prompt", user: "majid", host: "android-station", path: "~", cmd: "fastfetch --profile" },
   { type: "divider" },
-  { key: "OS", val: "Android Platform & Linux x86_64", color: VAL_COLOR },
-  { key: "Role", val: "Senior Android Developer", color: ACCENT_GREEN },
-  { key: "Company", val: "Myket (20M+ MAU)", color: ACCENT_GOLD },
-  { key: "Languages", val: "Kotlin, Java, SQL", color: VAL_COLOR },
-  { key: "Frameworks", val: "Jetpack Compose, Coroutines, Flow", color: ACCENT_CYAN },
-  { key: "Architecture", val: "Clean Arch, MVVM, MVI, Multi-Module", color: VAL_COLOR },
-  { key: "Libraries", val: "Hilt / Koin, Retrofit, Room, Coil", color: VAL_COLOR },
-  { key: "Testing & DevOps", val: "JUnit, Mockk, CI/CD Actions, Gradle", color: VAL_COLOR },
-  { key: "Experience", val: "High-scale consumer apps, UI/UX performance", color: ACCENT_PURPLE },
-  { key: "Location", val: "Iran", color: MUTED },
-  { key: "Contact", val: "Majid.moharami79@gmail.com", color: ACCENT_CYAN },
-  { key: "LinkedIn", val: "linkedin.com/in/majid-moharami", color: KEY_COLOR },
+  { icon: "", key: "User", val: "Majid Moharami", color: "#f8fafc", bold: true },
+  { icon: "💼", key: "Role", val: "Senior Android Developer", color: "#4ade80", bold: true },
+  { icon: "🏢", key: "Company", val: "Myket (20M+ MAU)", color: "#fbbf24" },
+  { icon: "󰅐", key: "Experience", val: "6+ Years Mobile Engineering", color: "#38bdf8" },
+  { icon: "󰘧", key: "Core Stack", val: "Kotlin • Compose • Coroutines • Flow", color: "#c084fc" },
+  { icon: "", key: "Architecture", val: "Clean Arch • MVVM / MVI • Multi-Module", color: "#22d3ee" },
+  { icon: "📦", key: "Libraries", val: "Hilt, Retrofit, Room, Coil", color: "#e2e8f0" },
+  { icon: "🛠", key: "Tooling", val: "Android Studio, Gradle, Git, CI/CD", color: "#fb923c" },
+  { icon: "🧪", key: "Testing", val: "JUnit, Mockk, UI Automation", color: "#f43f5e" },
+  { icon: "📍", key: "Location", val: "Iran", color: "#94a3b8" },
+  { icon: "📬", key: "Contact", val: "Majid.moharami79@gmail.com", color: "#38bdf8" },
+  { icon: "🔗", key: "LinkedIn", val: "linkedin.com/in/majid-moharami", color: "#60a5fa" },
   { type: "divider" },
   { type: "palette" }
 ];
 
 function buildInfoCardSvg() {
   let contentNodes = '';
-  let startY = TITLEBAR_H + 28;
-  const lineSpacing = 24;
+  const startY = TITLEBAR_H + 24;
+  const lineSpacing = 23;
 
-  INFO_ROWS.forEach((row, i) => {
-    const delay = (0.08 + i * 0.055).toFixed(3);
+  ROWS.forEach((row, i) => {
+    const delay = (0.05 + i * 0.045).toFixed(3);
     const y = startY + i * lineSpacing;
 
-    if (row.type === "header") {
+    if (row.type === "prompt") {
       contentNodes += `    <g class="fade-row" style="animation-delay:${delay}s">
-      <text x="${PAD_X}" y="${y}" class="user-header">majid<tspan fill="${MUTED}">@</tspan><tspan fill="${ACCENT_CYAN}">android-station</tspan></text>
+      <text x="${PAD_X}" y="${y}" class="prompt-text">
+        <tspan fill="#4ade80" font-weight="700">${row.user}</tspan><tspan fill="${MUTED}">@</tspan><tspan fill="#38bdf8" font-weight="700">${row.host}</tspan><tspan fill="${MUTED}">:</tspan><tspan fill="#fbbf24">${row.path}</tspan><tspan fill="#f8fafc"> $ </tspan><tspan fill="#f1f5f9">${row.cmd}</tspan>
+      </text>
     </g>\n`;
     } else if (row.type === "divider") {
       contentNodes += `    <g class="fade-row" style="animation-delay:${delay}s">
-      <text x="${PAD_X}" y="${y}" class="divider-line">----------------------------------------------</text>
+      <line x1="${PAD_X}" y1="${y - 4}" x2="${WIDTH - PAD_X}" y2="${y - 4}" stroke="${BORDER_COLOR}" stroke-width="1" stroke-dasharray="3,3" />
     </g>\n`;
     } else if (row.type === "palette") {
-      const colors = ["#ff5555", "#50fa7b", "#f1fa8c", "#bd93f9", "#ff79c6", "#8be9fd", "#f8f8f2", "#6272a4"];
-      let blocks = '';
+      const colors = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#06b6d4", "#3b82f6", "#a855f7", "#ec4899"];
+      let dots = '';
       colors.forEach((c, idx) => {
-        blocks += `<rect x="${PAD_X + idx * 24}" y="${y - 12}" width="16" height="14" rx="3" fill="${c}" />`;
+        dots += `<circle cx="${PAD_X + 12 + idx * 26}" cy="${y - 4}" r="7" fill="${c}" />`;
       });
       contentNodes += `    <g class="fade-row" style="animation-delay:${delay}s">
-      ${blocks}
+      ${dots}
     </g>\n`;
     } else {
+      const boldStyle = row.bold ? 'font-weight: 700;' : 'font-weight: 500;';
       contentNodes += `    <g class="fade-row" style="animation-delay:${delay}s">
       <text x="${PAD_X}" y="${y}" class="row-key">${row.key}:</text>
-      <text x="${PAD_X + 116}" y="${y}" class="row-val" fill="${row.color || VAL_COLOR}">${row.val}</text>
+      <text x="${PAD_X + 110}" y="${y}" class="row-val" fill="${row.color}" style="${boldStyle}">${row.val}</text>
     </g>\n`;
     }
   });
@@ -79,38 +75,43 @@ function buildInfoCardSvg() {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${HEIGHT}" width="100%" height="100%">
   <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e14" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
     <style>
       @keyframes rowSlideIn {
-        0% { opacity: 0; transform: translateX(-8px); }
+        0% { opacity: 0; transform: translateX(-10px); }
         100% { opacity: 1; transform: translateX(0); }
       }
-      .bg { fill: ${BG}; stroke: ${BORDER_COLOR}; stroke-width: 1; rx: 10px; }
+      .bg { fill: url(#cardGrad); stroke: ${BORDER_COLOR}; stroke-width: 1; rx: 10px; }
       .titlebar { fill: ${BG_CARD}; }
-      .title-text { fill: #e6edf3; font-size: 11px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-      .fade-row { animation: rowSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
-      .user-header { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; font-weight: 700; fill: ${ACCENT_GREEN}; }
-      .divider-line { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; fill: ${MUTED}; }
-      .row-key { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11.5px; font-weight: 600; fill: ${KEY_COLOR}; }
-      .row-val { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11.5px; }
+      .title-text { fill: #e6edf3; font-size: 11px; font-weight: 600; font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; }
+      .badge-sys { fill: #a855f7; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
+      .fade-row { animation: rowSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .prompt-text { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11.5px; }
+      .row-key { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11px; font-weight: 600; fill: #7dd3fc; }
+      .row-val { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11px; }
     </style>
   </defs>
 
   <!-- Background Card -->
   <rect width="${WIDTH}" height="${HEIGHT}" class="bg" />
 
-  <!-- Terminal Header -->
+  <!-- Terminal Titlebar -->
   <path d="M 0 10 Q 0 0 10 0 L ${WIDTH - 10} 0 Q ${WIDTH} 0 ${WIDTH} 10 L ${WIDTH} ${TITLEBAR_H} L 0 ${TITLEBAR_H} Z" class="titlebar" />
   <line x1="0" y1="${TITLEBAR_H}" x2="${WIDTH}" y2="${TITLEBAR_H}" stroke="${BORDER_COLOR}" stroke-width="1" />
 
-  <!-- Window Dots -->
-  <circle cx="${PAD_X}" cy="${TITLEBAR_H / 2}" r="5" fill="#ff5f56" />
-  <circle cx="${PAD_X + 14}" cy="${TITLEBAR_H / 2}" r="5" fill="#ffbd2e" />
-  <circle cx="${PAD_X + 28}" cy="${TITLEBAR_H / 2}" r="5" fill="#27c93f" />
+  <!-- Terminal Window Controls -->
+  <circle cx="18" cy="${TITLEBAR_H / 2}" r="5" fill="#ff5f56" />
+  <circle cx="32" cy="${TITLEBAR_H / 2}" r="5" fill="#ffbd2e" />
+  <circle cx="46" cy="${TITLEBAR_H / 2}" r="5" fill="#27c93f" />
 
-  <!-- Terminal Title -->
-  <text x="${WIDTH / 2 + 10}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">💻 neofetch --system</text>
+  <!-- Terminal Title & Status -->
+  <text x="${WIDTH / 2 - 10}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">💻 majid@fastfetch</text>
+  <text x="${WIDTH - 18}" y="${TITLEBAR_H / 2 + 4}" text-anchor="end" class="badge-sys">[ ANDROID ]</text>
 
-  <!-- System Info Lines -->
+  <!-- System Info Content -->
   <g>
 ${contentNodes}
   </g>
@@ -120,7 +121,7 @@ ${contentNodes}
 function main() {
   const svg = buildInfoCardSvg();
   fs.writeFileSync(OUT_PATH, svg, 'utf-8');
-  console.log(`Generated ${OUT_PATH} (${WIDTH}x${HEIGHT})`);
+  console.log(`Generated enhanced ${OUT_PATH} (${WIDTH}x${HEIGHT})`);
 }
 
 main();

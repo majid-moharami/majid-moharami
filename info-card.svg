@@ -1,98 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490" width="100%" height="100%">
   <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e14" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
     <style>
       @keyframes rowSlideIn {
-        0% { opacity: 0; transform: translateX(-8px); }
+        0% { opacity: 0; transform: translateX(-10px); }
         100% { opacity: 1; transform: translateX(0); }
       }
-      .bg { fill: #0a0e14; stroke: #30363d; stroke-width: 1; rx: 10px; }
+      .bg { fill: url(#cardGrad); stroke: #30363d; stroke-width: 1; rx: 10px; }
       .titlebar { fill: #0d1117; }
-      .title-text { fill: #e6edf3; font-size: 11px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-      .fade-row { animation: rowSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
-      .user-header { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; font-weight: 700; fill: #39d353; }
-      .divider-line { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; fill: #7d8590; }
-      .row-key { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11.5px; font-weight: 600; fill: #79c0ff; }
-      .row-val { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11.5px; }
+      .title-text { fill: #e6edf3; font-size: 11px; font-weight: 600; font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; }
+      .badge-sys { fill: #a855f7; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
+      .fade-row { animation: rowSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .prompt-text { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11.5px; }
+      .row-key { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11px; font-weight: 600; fill: #7dd3fc; }
+      .row-val { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11px; }
     </style>
   </defs>
 
   <!-- Background Card -->
   <rect width="490" height="490" class="bg" />
 
-  <!-- Terminal Header -->
+  <!-- Terminal Titlebar -->
   <path d="M 0 10 Q 0 0 10 0 L 480 0 Q 490 0 490 10 L 490 34 L 0 34 Z" class="titlebar" />
   <line x1="0" y1="34" x2="490" y2="34" stroke="#30363d" stroke-width="1" />
 
-  <!-- Window Dots -->
-  <circle cx="24" cy="17" r="5" fill="#ff5f56" />
-  <circle cx="38" cy="17" r="5" fill="#ffbd2e" />
-  <circle cx="52" cy="17" r="5" fill="#27c93f" />
+  <!-- Terminal Window Controls -->
+  <circle cx="18" cy="17" r="5" fill="#ff5f56" />
+  <circle cx="32" cy="17" r="5" fill="#ffbd2e" />
+  <circle cx="46" cy="17" r="5" fill="#27c93f" />
 
-  <!-- Terminal Title -->
-  <text x="255" y="21" text-anchor="middle" class="title-text">💻 neofetch --system</text>
+  <!-- Terminal Title & Status -->
+  <text x="235" y="21" text-anchor="middle" class="title-text">💻 majid@fastfetch</text>
+  <text x="472" y="21" text-anchor="end" class="badge-sys">[ ANDROID ]</text>
 
-  <!-- System Info Lines -->
+  <!-- System Info Content -->
   <g>
-    <g class="fade-row" style="animation-delay:0.080s">
-      <text x="24" y="62" class="user-header">majid<tspan fill="#7d8590">@</tspan><tspan fill="#58a6ff">android-station</tspan></text>
+    <g class="fade-row" style="animation-delay:0.050s">
+      <text x="22" y="58" class="prompt-text">
+        <tspan fill="#4ade80" font-weight="700">majid</tspan><tspan fill="#64748b">@</tspan><tspan fill="#38bdf8" font-weight="700">android-station</tspan><tspan fill="#64748b">:</tspan><tspan fill="#fbbf24">~</tspan><tspan fill="#f8fafc"> $ </tspan><tspan fill="#f1f5f9">fastfetch --profile</tspan>
+      </text>
     </g>
-    <g class="fade-row" style="animation-delay:0.135s">
-      <text x="24" y="86" class="divider-line">----------------------------------------------</text>
+    <g class="fade-row" style="animation-delay:0.095s">
+      <line x1="22" y1="77" x2="468" y2="77" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3" />
     </g>
-    <g class="fade-row" style="animation-delay:0.190s">
-      <text x="24" y="110" class="row-key">OS:</text>
-      <text x="140" y="110" class="row-val" fill="#e6edf3">Android Platform & Linux x86_64</text>
+    <g class="fade-row" style="animation-delay:0.140s">
+      <text x="22" y="104" class="row-key">User:</text>
+      <text x="132" y="104" class="row-val" fill="#f8fafc" style="font-weight: 700;">Majid Moharami</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.245s">
-      <text x="24" y="134" class="row-key">Role:</text>
-      <text x="140" y="134" class="row-val" fill="#39d353">Senior Android Developer</text>
+    <g class="fade-row" style="animation-delay:0.185s">
+      <text x="22" y="127" class="row-key">Role:</text>
+      <text x="132" y="127" class="row-val" fill="#4ade80" style="font-weight: 700;">Senior Android Developer</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.300s">
-      <text x="24" y="158" class="row-key">Company:</text>
-      <text x="140" y="158" class="row-val" fill="#e3b341">Myket (20M+ MAU)</text>
+    <g class="fade-row" style="animation-delay:0.230s">
+      <text x="22" y="150" class="row-key">Company:</text>
+      <text x="132" y="150" class="row-val" fill="#fbbf24" style="font-weight: 500;">Myket (20M+ MAU)</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.355s">
-      <text x="24" y="182" class="row-key">Languages:</text>
-      <text x="140" y="182" class="row-val" fill="#e6edf3">Kotlin, Java, SQL</text>
+    <g class="fade-row" style="animation-delay:0.275s">
+      <text x="22" y="173" class="row-key">Experience:</text>
+      <text x="132" y="173" class="row-val" fill="#38bdf8" style="font-weight: 500;">6+ Years Mobile Engineering</text>
+    </g>
+    <g class="fade-row" style="animation-delay:0.320s">
+      <text x="22" y="196" class="row-key">Core Stack:</text>
+      <text x="132" y="196" class="row-val" fill="#c084fc" style="font-weight: 500;">Kotlin • Compose • Coroutines • Flow</text>
+    </g>
+    <g class="fade-row" style="animation-delay:0.365s">
+      <text x="22" y="219" class="row-key">Architecture:</text>
+      <text x="132" y="219" class="row-val" fill="#22d3ee" style="font-weight: 500;">Clean Arch • MVVM / MVI • Multi-Module</text>
     </g>
     <g class="fade-row" style="animation-delay:0.410s">
-      <text x="24" y="206" class="row-key">Frameworks:</text>
-      <text x="140" y="206" class="row-val" fill="#58a6ff">Jetpack Compose, Coroutines, Flow</text>
+      <text x="22" y="242" class="row-key">Libraries:</text>
+      <text x="132" y="242" class="row-val" fill="#e2e8f0" style="font-weight: 500;">Hilt, Retrofit, Room, Coil</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.465s">
-      <text x="24" y="230" class="row-key">Architecture:</text>
-      <text x="140" y="230" class="row-val" fill="#e6edf3">Clean Arch, MVVM, MVI, Multi-Module</text>
+    <g class="fade-row" style="animation-delay:0.455s">
+      <text x="22" y="265" class="row-key">Tooling:</text>
+      <text x="132" y="265" class="row-val" fill="#fb923c" style="font-weight: 500;">Android Studio, Gradle, Git, CI/CD</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.520s">
-      <text x="24" y="254" class="row-key">Libraries:</text>
-      <text x="140" y="254" class="row-val" fill="#e6edf3">Hilt / Koin, Retrofit, Room, Coil</text>
+    <g class="fade-row" style="animation-delay:0.500s">
+      <text x="22" y="288" class="row-key">Testing:</text>
+      <text x="132" y="288" class="row-val" fill="#f43f5e" style="font-weight: 500;">JUnit, Mockk, UI Automation</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.575s">
-      <text x="24" y="278" class="row-key">Testing & DevOps:</text>
-      <text x="140" y="278" class="row-val" fill="#e6edf3">JUnit, Mockk, CI/CD Actions, Gradle</text>
+    <g class="fade-row" style="animation-delay:0.545s">
+      <text x="22" y="311" class="row-key">Location:</text>
+      <text x="132" y="311" class="row-val" fill="#94a3b8" style="font-weight: 500;">Iran</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.630s">
-      <text x="24" y="302" class="row-key">Experience:</text>
-      <text x="140" y="302" class="row-val" fill="#d2a8ff">High-scale consumer apps, UI/UX performance</text>
+    <g class="fade-row" style="animation-delay:0.590s">
+      <text x="22" y="334" class="row-key">Contact:</text>
+      <text x="132" y="334" class="row-val" fill="#38bdf8" style="font-weight: 500;">Majid.moharami79@gmail.com</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.685s">
-      <text x="24" y="326" class="row-key">Location:</text>
-      <text x="140" y="326" class="row-val" fill="#7d8590">Iran</text>
+    <g class="fade-row" style="animation-delay:0.635s">
+      <text x="22" y="357" class="row-key">LinkedIn:</text>
+      <text x="132" y="357" class="row-val" fill="#60a5fa" style="font-weight: 500;">linkedin.com/in/majid-moharami</text>
     </g>
-    <g class="fade-row" style="animation-delay:0.740s">
-      <text x="24" y="350" class="row-key">Contact:</text>
-      <text x="140" y="350" class="row-val" fill="#58a6ff">Majid.moharami79@gmail.com</text>
+    <g class="fade-row" style="animation-delay:0.680s">
+      <line x1="22" y1="376" x2="468" y2="376" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3" />
     </g>
-    <g class="fade-row" style="animation-delay:0.795s">
-      <text x="24" y="374" class="row-key">LinkedIn:</text>
-      <text x="140" y="374" class="row-val" fill="#79c0ff">linkedin.com/in/majid-moharami</text>
-    </g>
-    <g class="fade-row" style="animation-delay:0.850s">
-      <text x="24" y="398" class="divider-line">----------------------------------------------</text>
-    </g>
-    <g class="fade-row" style="animation-delay:0.905s">
-      <rect x="24" y="410" width="16" height="14" rx="3" fill="#ff5555" /><rect x="48" y="410" width="16" height="14" rx="3" fill="#50fa7b" /><rect x="72" y="410" width="16" height="14" rx="3" fill="#f1fa8c" /><rect x="96" y="410" width="16" height="14" rx="3" fill="#bd93f9" /><rect x="120" y="410" width="16" height="14" rx="3" fill="#ff79c6" /><rect x="144" y="410" width="16" height="14" rx="3" fill="#8be9fd" /><rect x="168" y="410" width="16" height="14" rx="3" fill="#f8f8f2" /><rect x="192" y="410" width="16" height="14" rx="3" fill="#6272a4" />
+    <g class="fade-row" style="animation-delay:0.725s">
+      <circle cx="34" cy="399" r="7" fill="#ef4444" /><circle cx="60" cy="399" r="7" fill="#f97316" /><circle cx="86" cy="399" r="7" fill="#eab308" /><circle cx="112" cy="399" r="7" fill="#22c55e" /><circle cx="138" cy="399" r="7" fill="#06b6d4" /><circle cx="164" cy="399" r="7" fill="#3b82f6" /><circle cx="190" cy="399" r="7" fill="#a855f7" /><circle cx="216" cy="399" r="7" fill="#ec4899" />
     </g>
 
   </g>

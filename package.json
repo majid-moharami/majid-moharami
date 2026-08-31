@@ -1,0 +1,19 @@
+{
+  "name": "majid-moharami-profile-readme",
+  "version": "1.0.0",
+  "description": "Animated terminal-style GitHub profile README assets generator",
+  "main": "scripts/fetch_contributions.js",
+  "type": "module",
+  "scripts": {
+    "fetch": "node scripts/fetch_contributions.js",
+    "heatmap": "node scripts/render_heatmap_svg.js",
+    "portrait": "node scripts/make_ascii_svg.js",
+    "card": "node scripts/make_info_card.js",
+    "generate": "node scripts/fetch_contributions.js && node scripts/render_heatmap_svg.js && node scripts/make_ascii_svg.js && node scripts/make_info_card.js",
+    "generate:heatmap": "node scripts/fetch_contributions.js && node scripts/render_heatmap_svg.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "sharp": "^0.33.5"
+  }
+}

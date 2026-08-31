@@ -7,9 +7,9 @@
   "scripts": {
     "fetch": "node scripts/fetch_contributions.js",
     "heatmap": "node scripts/render_heatmap_svg.js",
-    "code": "node scripts/make_code_svg.js",
-    "card": "node scripts/make_info_card.js",
-    "generate": "node scripts/fetch_contributions.js && node scripts/render_heatmap_svg.js && node scripts/make_code_svg.js && node scripts/make_info_card.js",
+    "architect": "node scripts/make_architect_card.js",
+    "developer": "node scripts/make_developer_card.js",
+    "generate": "node scripts/fetch_contributions.js && node scripts/render_heatmap_svg.js && node scripts/make_architect_card.js && node scripts/make_developer_card.js",
     "generate:heatmap": "node scripts/fetch_contributions.js && node scripts/render_heatmap_svg.js"
   },
   "dependencies": {

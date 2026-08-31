@@ -5,11 +5,11 @@
 
 <br><br>
 
-<h3><code>majid@github ~ $ whoami</code></h3>
+<h3><code>majid@github ~ $ whoami --executive</code></h3>
 <table>
   <tr>
-    <td valign="top"><img src="./code-window.svg" width="420" alt="Majid Moharami Android Studio Kotlin Code" /></td>
-    <td valign="top"><img src="./info-card.svg" width="420" alt="Majid Moharami Fastfetch System Info" /></td>
+    <td valign="top"><img src="./architect-card.svg" width="420" alt="Majid Moharami Engineering Impact & Architecture" /></td>
+    <td valign="top"><img src="./developer-card.svg" width="420" alt="Majid Moharami Executive Profile & Tech Arsenal" /></td>
   </tr>
 </table>
 

@@ -8,8 +8,8 @@
 <h3><code>majid@github ~ $ whoami</code></h3>
 <table>
   <tr>
-    <td valign="top"><img src="./ascii-portrait.svg" width="370" alt="Majid Moharami ASCII Portrait" /></td>
-    <td valign="top"><img src="./info-card.svg" width="490" alt="Majid Moharami System Info" /></td>
+    <td valign="top"><img src="./code-window.svg" width="420" alt="Majid Moharami Android Studio Kotlin Code" /></td>
+    <td valign="top"><img src="./info-card.svg" width="420" alt="Majid Moharami Fastfetch System Info" /></td>
   </tr>
 </table>
 

@@ -8,24 +8,27 @@ const __dirname = path.dirname(__filename);
 const IN_PATH = path.join(__dirname, '..', 'data', 'contributions.json');
 const OUT_PATH = path.join(__dirname, '..', 'contrib-heatmap.svg');
 
-// Emerald & Neon Green GitHub palette
+// High-contrast vibrant GitHub dark palette
 const PALETTE = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353", "#56ff95"];
 
 const CELL = 12;
 const GAP = 3;
-const STEP = CELL + GAP;
-const PAD = 17;
-const LEFT_LABEL_W = 31;
-const TOP_LABEL_H = 20;
-const TITLEBAR_H = 34;
+const STEP = CELL + GAP; // 15
+const PAD = 20;
+const LEFT_LABEL_W = 32;
+const TOP_LABEL_H = 22;
+const TITLEBAR_H = 36;
+
+const WIDTH = 860;
+const HEIGHT = 246;
 
 const BG_CARD = "#0d1117";
 const BORDER_COLOR = "#30363d";
-const MUTED = "#64748b";
-const TEXT = "#f8fafc";
-const ACCENT = "#38bdf8";
-const GREEN = "#4ade80";
-const GOLD = "#fbbf24";
+const MUTED = "#7d8590";
+const TEXT = "#f0f6fc";
+const ACCENT_GREEN = "#3fb950";
+const ACCENT_GOLD = "#d29922";
+const ACCENT_BLUE = "#58a6ff";
 
 function levelFor(count) {
   if (count <= 0) return 0;
@@ -100,10 +103,6 @@ function renderSvg(data) {
     }
   });
 
-  const canvasW = 860;
-  const statsH = 72;
-  const canvasH = TITLEBAR_H + TOP_LABEL_H + artH + statsH + PAD;
-
   const startYear = days.length ? new Date(days[0].date).getUTCFullYear() : new Date().getUTCFullYear();
   const endYear = days.length ? new Date(days[days.length - 1].date).getUTCFullYear() : new Date().getUTCFullYear();
   const yearRange = startYear === endYear ? `${startYear}` : `${startYear} - ${endYear}`;
@@ -142,52 +141,57 @@ function renderSvg(data) {
     dayTexts += `      <text x="${x}" y="${y}" text-anchor="end" class="label-day">${name}</text>\n`;
   });
 
-  const legendX = canvasW - PAD - 5 * (10 + 3) - 38;
+  // Legend position: safely inside canvas on the right
+  const legendRight = WIDTH - PAD;
+  const legendTotalW = 28 + PALETTE.length * 14 + 32;
+  const legendX = legendRight - legendTotalW;
   const legendY = TITLEBAR_H + TOP_LABEL_H + artH + 16;
 
   let legendBoxes = '';
   PALETTE.forEach((color, i) => {
-    const lx = legendX + 28 + i * 13;
+    const lx = legendX + 30 + i * 14;
     legendBoxes += `<rect x="${lx}" y="${legendY - 8}" width="10" height="10" rx="2" fill="${color}" />`;
   });
 
-  const statsY = TITLEBAR_H + TOP_LABEL_H + artH + 34;
+  const statsY = TITLEBAR_H + TOP_LABEL_H + artH + 30;
+  const cardW = 260;
+  const cardH = 40;
 
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${canvasW} ${canvasH}" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${HEIGHT}" width="100%" height="100%">
   <defs>
-    <linearGradient id="heatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="heatBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0a0e14" />
-      <stop offset="100%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0d1117" />
     </linearGradient>
     <style>
       @keyframes cellFade {
         0% { opacity: 0; transform: translateY(-4px); }
         100% { opacity: 1; transform: translateY(0); }
       }
-      .bg { fill: url(#heatGrad); stroke: ${BORDER_COLOR}; stroke-width: 1; rx: 10px; }
+      .bg { fill: url(#heatBg); stroke: ${BORDER_COLOR}; stroke-width: 1; rx: 10px; }
       .titlebar { fill: ${BG_CARD}; }
-      .chip-bg { fill: #111827; stroke: #1e293b; stroke-width: 1; rx: 6px; }
+      .chip-bg { fill: #161b22; stroke: #30363d; stroke-width: 1; rx: 6px; }
       .c { animation: cellFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
-      .label-month { fill: ${MUTED}; font-size: 10px; font-weight: 500; font-family: ui-monospace, "SF Mono", monospace; }
-      .label-day { fill: ${MUTED}; font-size: 9.5px; font-weight: 500; font-family: ui-monospace, "SF Mono", monospace; }
-      .title-text { fill: ${TEXT}; font-size: 11.5px; font-weight: 600; font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; }
-      .badge-stats { fill: #4ade80; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
-      .legend-text { fill: ${MUTED}; font-size: 10px; font-family: ui-monospace, "SF Mono", monospace; }
-      .chip-title { fill: ${MUTED}; font-size: 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-      .chip-val { fill: ${TEXT}; font-size: 13.5px; font-weight: 700; font-family: ui-monospace, "SF Mono", monospace; }
-      .accent-green { fill: ${GREEN}; }
-      .accent-gold { fill: ${GOLD}; }
-      .accent-blue { fill: ${ACCENT}; }
+      .label-month { fill: ${MUTED}; font-size: 10px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
+      .label-day { fill: ${MUTED}; font-size: 9px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
+      .title-text { fill: ${TEXT}; font-size: 11.5px; font-weight: 600; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+      .badge-stats { fill: #3fb950; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
+      .legend-text { fill: ${MUTED}; font-size: 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
+      .chip-title { fill: ${MUTED}; font-size: 9.5px; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; letter-spacing: 0.5px; }
+      .chip-val { fill: ${TEXT}; font-size: 13px; font-weight: 700; font-family: ui-monospace, "SF Mono", monospace; }
+      .accent-green { fill: ${ACCENT_GREEN}; }
+      .accent-gold { fill: ${ACCENT_GOLD}; }
+      .accent-blue { fill: ${ACCENT_BLUE}; }
     </style>
   </defs>
 
   <!-- Background Card -->
-  <rect width="${canvasW}" height="${canvasH}" class="bg" />
+  <rect width="${WIDTH}" height="${HEIGHT}" class="bg" />
 
   <!-- Terminal Titlebar -->
-  <path d="M 0 10 Q 0 0 10 0 L ${canvasW - 10} 0 Q ${canvasW} 0 ${canvasW} 10 L ${canvasW} ${TITLEBAR_H} L 0 ${TITLEBAR_H} Z" class="titlebar" />
-  <line x1="0" y1="${TITLEBAR_H}" x2="${canvasW}" y2="${TITLEBAR_H}" stroke="${BORDER_COLOR}" stroke-width="1" />
+  <path d="M 0 10 Q 0 0 10 0 L ${WIDTH - 10} 0 Q ${WIDTH} 0 ${WIDTH} 10 L ${WIDTH} ${TITLEBAR_H} L 0 ${TITLEBAR_H} Z" class="titlebar" />
+  <line x1="0" y1="${TITLEBAR_H}" x2="${WIDTH}" y2="${TITLEBAR_H}" stroke="${BORDER_COLOR}" stroke-width="1" />
 
   <!-- Terminal Window Controls -->
   <circle cx="18" cy="${TITLEBAR_H / 2}" r="5" fill="#ff5f56" />
@@ -195,8 +199,8 @@ function renderSvg(data) {
   <circle cx="46" cy="${TITLEBAR_H / 2}" r="5" fill="#27c93f" />
 
   <!-- Terminal Title & Status -->
-  <text x="${canvasW / 2 - 10}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">⚡ majid@contributions.sh (${yearRange})</text>
-  <text x="${canvasW - 18}" y="${TITLEBAR_H / 2 + 4}" text-anchor="end" class="badge-stats">[ ${stats.total} COMMITS ]</text>
+  <text x="${WIDTH / 2}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">⚡ contributions.sh &bull; ${yearRange}</text>
+  <text x="${WIDTH - 20}" y="${TITLEBAR_H / 2 + 4}" text-anchor="end" class="badge-stats">[ ${stats.total} COMMITS ]</text>
 
   <!-- Month & Day Labels -->
   <g>
@@ -213,30 +217,30 @@ ${cellRects}
   <g>
     <text x="${legendX}" y="${legendY}" class="legend-text">Less</text>
     ${legendBoxes}
-    <text x="${legendX + 28 + PALETTE.length * 13 + 4}" y="${legendY}" class="legend-text">More</text>
+    <text x="${legendX + 30 + PALETTE.length * 14 + 6}" y="${legendY}" class="legend-text">More</text>
   </g>
 
   <!-- Bottom Metric Cards -->
   <g>
     <!-- Total Contributions Chip -->
-    <rect x="${PAD}" y="${statsY}" width="260" height="42" class="chip-bg" />
-    <text x="${PAD + 12}" y="${statsY + 16}" class="chip-title">YEAR CONTRIBUTIONS</text>
-    <text x="${PAD + 12}" y="${statsY + 33}" class="chip-val"><tspan class="accent-green">${stats.total.toLocaleString()}</tspan> Total Commits</text>
+    <rect x="${PAD}" y="${statsY}" width="${cardW}" height="${cardH}" class="chip-bg" />
+    <text x="${PAD + 12}" y="${statsY + 15}" class="chip-title">YEAR CONTRIBUTIONS</text>
+    <text x="${PAD + 12}" y="${statsY + 31}" class="chip-val"><tspan class="accent-green">${stats.total.toLocaleString()}</tspan> Total Commits</text>
 
     <!-- Current Streak Chip -->
-    <rect x="${PAD + 280}" y="${statsY}" width="260" height="42" class="chip-bg" />
-    <text x="${PAD + 292}" y="${statsY + 16}" class="chip-title">CURRENT STREAK</text>
-    <text x="${PAD + 292}" y="${statsY + 33}" class="chip-val"><tspan class="accent-gold">${stats.currentStreak}</tspan> Days Active</text>
+    <rect x="${PAD + 280}" y="${statsY}" width="${cardW}" height="${cardH}" class="chip-bg" />
+    <text x="${PAD + 292}" y="${statsY + 15}" class="chip-title">CURRENT STREAK</text>
+    <text x="${PAD + 292}" y="${statsY + 31}" class="chip-val"><tspan class="accent-gold">${stats.currentStreak}</tspan> Days Active</text>
 
     <!-- Longest Streak Chip -->
-    <rect x="${PAD + 560}" y="${statsY}" width="266" height="42" class="chip-bg" />
-    <text x="${PAD + 572}" y="${statsY + 16}" class="chip-title">LONGEST STREAK</text>
-    <text x="${PAD + 572}" y="${statsY + 33}" class="chip-val"><tspan class="accent-blue">${stats.longestStreak}</tspan> Days Consistent</text>
+    <rect x="${PAD + 560}" y="${statsY}" width="${cardW}" height="${cardH}" class="chip-bg" />
+    <text x="${PAD + 572}" y="${statsY + 15}" class="chip-title">LONGEST STREAK</text>
+    <text x="${PAD + 572}" y="${statsY + 31}" class="chip-val"><tspan class="accent-blue">${stats.longestStreak}</tspan> Days Consistent</text>
   </g>
 </svg>`;
 
   fs.writeFileSync(OUT_PATH, svg, 'utf-8');
-  console.log(`Generated enhanced ${OUT_PATH} (${canvasW}x${canvasH})`);
+  console.log(`Generated enhanced ${OUT_PATH} (${WIDTH}x${HEIGHT})`);
 }
 
 function main() {

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 470" width="100%" height="100%">
+  <defs>
+    <linearGradient id="codeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e14" />
+      <stop offset="100%" stop-color="#0d1117" />
+    </linearGradient>
+    <style>
+      @keyframes rowFadeIn {
+        0% { opacity: 0; transform: translateY(-4px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .bg { fill: url(#codeBg); stroke: #30363d; stroke-width: 1; rx: 10px; }
+      .titlebar { fill: #0d1117; }
+      .tab-active { fill: #161b22; stroke: #30363d; stroke-width: 1; }
+      .tab-inactive { fill: transparent; }
+      .title-text { fill: #8b949e; font-size: 11px; font-weight: 500; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+      .tab-text { fill: #f0f6fc; font-size: 11px; font-weight: 600; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+      .tab-text-inactive { fill: #8b949e; font-size: 11px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+      .line-num { fill: #484f58; font-size: 11px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+      .code-row { animation: rowFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .code-text { font-family: ui-monospace, "SF Mono", "Fira Code", "Cascadia Code", Menlo, monospace; font-size: 11.5px; fill: #e6edf3; }
+      .cursor { fill: #58a6ff; animation: blink 1s step-end infinite; }
+      .tag-android { fill: #3ddc84; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
+    </style>
+  </defs>
+
+  <!-- Background Card -->
+  <rect width="420" height="470" class="bg" />
+
+  <!-- Titlebar -->
+  <path d="M 0 10 Q 0 0 10 0 L 410 0 Q 420 0 420 10 L 420 36 L 0 36 Z" class="titlebar" />
+  <line x1="0" y1="36" x2="420" y2="36" stroke="#30363d" stroke-width="1" />
+
+  <!-- Window Controls -->
+  <circle cx="18" cy="18" r="5" fill="#ff5f56" />
+  <circle cx="32" cy="18" r="5" fill="#ffbd2e" />
+  <circle cx="46" cy="18" r="5" fill="#27c93f" />
+
+  <!-- Title -->
+  <text x="210" y="22" text-anchor="middle" class="title-text">Android Studio &bull; MainActivity.kt</text>
+  <text x="402" y="22" text-anchor="end" class="tag-android">[ KOTLIN ]</text>
+
+  <!-- Tabs Bar -->
+  <rect x="0" y="36" width="420" height="28" fill="#0d1117" />
+  <line x1="0" y1="64" x2="420" y2="64" stroke="#30363d" stroke-width="1" />
+
+  <!-- Tab 1 Active -->
+  <rect x="14" y="40" width="125" height="24" rx="4" class="tab-active" />
+  <text x="24" y="55" class="tab-text">MainActivity.kt</text>
+  <text x="126" y="54" fill="#8b949e" font-size="10px" font-family="sans-serif">&times;</text>
+
+  <!-- Tab 2 Inactive -->
+  <text x="155" y="55" class="tab-text-inactive">Architecture.kt</text>
+
+  <!-- Editor Gutter Divider -->
+  <line x1="40" y1="64" x2="40" y2="460" stroke="#21262d" stroke-width="1" />
+
+  <!-- Line Numbers -->
+  <g>
+<text x="24" y="82" class="line-num"> 1</text>
+<text x="24" y="101.5" class="line-num"> 2</text>
+<text x="24" y="121" class="line-num"> 3</text>
+<text x="24" y="140.5" class="line-num"> 4</text>
+<text x="24" y="160" class="line-num"> 5</text>
+<text x="24" y="179.5" class="line-num"> 6</text>
+<text x="24" y="199" class="line-num"> 7</text>
+<text x="24" y="218.5" class="line-num"> 8</text>
+<text x="24" y="238" class="line-num"> 9</text>
+<text x="24" y="257.5" class="line-num">10</text>
+<text x="24" y="277" class="line-num">11</text>
+<text x="24" y="296.5" class="line-num">12</text>
+<text x="24" y="316" class="line-num">13</text>
+<text x="24" y="335.5" class="line-num">14</text>
+<text x="24" y="355" class="line-num">15</text>
+<text x="24" y="374.5" class="line-num">16</text>
+<text x="24" y="394" class="line-num">17</text>
+<text x="24" y="413.5" class="line-num">18</text>
+
+  </g>
+
+  <!-- Code Content -->
+  <g>
+    <g class="code-row" style="animation-delay:0.040s">
+      <text x="46" y="82" class="code-text"><tspan fill="#ff7b72">package</tspan> dev.majid.profile</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.075s">
+      <text x="46" y="101.5" class="code-text"></text>
+    </g>
+    <g class="code-row" style="animation-delay:0.110s">
+      <text x="46" y="121" class="code-text"><tspan fill="#ff7b72">import</tspan> androidx.compose.runtime.*</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.145s">
+      <text x="46" y="140.5" class="code-text"></text>
+    </g>
+    <g class="code-row" style="animation-delay:0.180s">
+      <text x="46" y="160" class="code-text"><tspan fill="#d2a8ff">@Composable</tspan></text>
+    </g>
+    <g class="code-row" style="animation-delay:0.215s">
+      <text x="46" y="179.5" class="code-text"><tspan fill="#ff7b72">fun</tspan> <tspan fill="#d2a8ff">MajidMoharami</tspan>() {</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.250s">
+      <text x="46" y="199" class="code-text">  <tspan fill="#ff7b72">val</tspan> engineer = <tspan fill="#79c0ff">Developer</tspan>(</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.285s">
+      <text x="46" y="218.5" class="code-text">    name = <tspan fill="#a5d6ff">"Majid Moharami"</tspan>,</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.320s">
+      <text x="46" y="238" class="code-text">    role = <tspan fill="#a5d6ff">"Senior Android Dev"</tspan>,</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.355s">
+      <text x="46" y="257.5" class="code-text">    company = <tspan fill="#a5d6ff">"Myket"</tspan>, <tspan fill="#8b949e">// 20M+ MAU</tspan></text>
+    </g>
+    <g class="code-row" style="animation-delay:0.390s">
+      <text x="46" y="277" class="code-text">    stack = <tspan fill="#d2a8ff">listOf</tspan>(</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.425s">
+      <text x="46" y="296.5" class="code-text">      <tspan fill="#a5d6ff">"Kotlin"</tspan>, <tspan fill="#a5d6ff">"Compose"</tspan>,</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.460s">
+      <text x="46" y="316" class="code-text">      <tspan fill="#a5d6ff">"Coroutines"</tspan>, <tspan fill="#a5d6ff">"Hilt"</tspan></text>
+    </g>
+    <g class="code-row" style="animation-delay:0.495s">
+      <text x="46" y="335.5" class="code-text">    ),</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.530s">
+      <text x="46" y="355" class="code-text">    focus = <tspan fill="#a5d6ff">"High Performance"</tspan></text>
+    </g>
+    <g class="code-row" style="animation-delay:0.565s">
+      <text x="46" y="374.5" class="code-text">  )</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.600s">
+      <text x="46" y="394" class="code-text">  <tspan fill="#d2a8ff">BuildGreatApps</tspan>(engineer)</text>
+    </g>
+    <g class="code-row" style="animation-delay:0.635s">
+      <text x="46" y="413.5" class="code-text">}</text>
+    </g>
+
+  </g>
+
+  <!-- Blinking Cursor -->
+  <rect x="58" y="402.5" width="7" height="13" class="cursor" />
+</svg>

@@ -4,9 +4,11 @@
 ### Senior Android Developer & Mobile Architect • 20M+ MAU @ Myket
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/majid-moharami-02a0a71bb/"><img src="https://img.shields.io/badge/LinkedIn-Connect-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:Majid.moharami79@gmail.com"><img src="https://img.shields.io/badge/Email-Get_in_Touch-%23D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://myket.ir"><img src="https://img.shields.io/badge/Myket-20M+_MAU-%2300a86b?style=for-the-badge&logo=android&logoColor=white" alt="Myket" /></a>
+  <a href="https://www.linkedin.com/in/majid-moharami-02a0a71bb/"><img src="https://img.shields.io/badge/LinkedIn-Connect_%E2%86%92-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  &nbsp;
+  <a href="mailto:Majid.moharami79@gmail.com"><img src="https://img.shields.io/badge/Email-Send_Message_%E2%86%92-%23D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+  &nbsp;
+  <a href="https://myket.ir"><img src="https://img.shields.io/badge/Myket-20M+_MAU_%E2%86%92-%2300a86b?style=for-the-badge&logo=android&logoColor=white" alt="Myket" /></a>
 </p>
 
 <br>
@@ -27,12 +29,19 @@
       <img src="./architect-card.svg" width="420" alt="Majid Moharami Engineering Impact & Architecture" />
     </td>
     <td valign="top">
-      <a href="https://www.linkedin.com/in/majid-moharami-02a0a71bb/">
-        <img src="./developer-card.svg" width="420" alt="Majid Moharami Executive Profile & Tech Arsenal" />
-      </a>
+      <img src="./developer-card.svg" width="420" alt="Majid Moharami Executive Profile & Tech Arsenal" />
     </td>
   </tr>
 </table>
+
+<br>
+
+<!-- Direct Recruiter Action Row -->
+<p align="center">
+  <a href="https://www.linkedin.com/in/majid-moharami-02a0a71bb/"><img src="https://img.shields.io/badge/LinkedIn-majid--moharami-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Profile" /></a>
+  &nbsp;
+  <a href="mailto:Majid.moharami79@gmail.com"><img src="https://img.shields.io/badge/Gmail-Majid.moharami79%40gmail.com-%23EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" /></a>
+</p>
 
 <br>
 

@@ -79,7 +79,6 @@ function buildGrid(days) {
 function renderSvg(data) {
   const days = data.days || [];
   const stats = data.stats || { total: 0, currentStreak: 0, longestStreak: 0 };
-  const username = data.username || 'majid-moharami';
 
   const grid = buildGrid(days);
   const nCols = grid.length;
@@ -141,7 +140,6 @@ function renderSvg(data) {
     dayTexts += `      <text x="${x}" y="${y}" text-anchor="end" class="label-day">${name}</text>\n`;
   });
 
-  // Legend position: safely inside canvas on the right
   const legendRight = WIDTH - PAD;
   const legendTotalW = 28 + PALETTE.length * 14 + 32;
   const legendX = legendRight - legendTotalW;
@@ -157,8 +155,7 @@ function renderSvg(data) {
   const cardW = 260;
   const cardH = 40;
 
-  const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${HEIGHT}" width="100%" height="100%">
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <linearGradient id="heatBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0a0e14" />
@@ -175,11 +172,11 @@ function renderSvg(data) {
       .c { animation: cellFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
       .label-month { fill: ${MUTED}; font-size: 10px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
       .label-day { fill: ${MUTED}; font-size: 9px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
-      .title-text { fill: ${TEXT}; font-size: 11.5px; font-weight: 600; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
-      .badge-stats { fill: #3fb950; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
+      .title-text { fill: ${TEXT}; font-size: 11.5px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .badge-stats { fill: #3fb950; font-size: 9px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, monospace; }
       .legend-text { fill: ${MUTED}; font-size: 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
       .chip-title { fill: ${MUTED}; font-size: 9.5px; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; letter-spacing: 0.5px; }
-      .chip-val { fill: ${TEXT}; font-size: 13px; font-weight: 700; font-family: ui-monospace, "SF Mono", monospace; }
+      .chip-val { fill: ${TEXT}; font-size: 13px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, monospace; }
       .accent-green { fill: ${ACCENT_GREEN}; }
       .accent-gold { fill: ${ACCENT_GOLD}; }
       .accent-blue { fill: ${ACCENT_BLUE}; }
@@ -240,7 +237,7 @@ ${cellRects}
 </svg>`;
 
   fs.writeFileSync(OUT_PATH, svg, 'utf-8');
-  console.log(`Generated enhanced ${OUT_PATH} (${WIDTH}x${HEIGHT})`);
+  console.log(`Generated ${OUT_PATH} (${WIDTH}x${HEIGHT})`);
 }
 
 function main() {

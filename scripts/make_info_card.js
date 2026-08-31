@@ -73,8 +73,7 @@ function buildInfoCardSvg() {
     }
   });
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${HEIGHT}" width="100%" height="100%">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0a0e14" />
@@ -87,12 +86,12 @@ function buildInfoCardSvg() {
       }
       .bg { fill: url(#cardBg); stroke: ${BORDER_COLOR}; stroke-width: 1; rx: 10px; }
       .titlebar { fill: ${BG_CARD}; }
-      .title-text { fill: #8b949e; font-size: 11px; font-weight: 500; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+      .title-text { fill: #8b949e; font-size: 11px; font-weight: 500; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .badge-sys { fill: #a855f7; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
       .fade-row { animation: rowSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-      .prompt-text { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11.5px; }
-      .row-key { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11px; font-weight: 600; fill: #7dd3fc; }
-      .row-val { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace; font-size: 11px; }
+      .prompt-text { font-family: ui-monospace, SFMono-Regular, "Cascadia Code", Menlo, monospace; font-size: 11.5px; }
+      .row-key { font-family: ui-monospace, SFMono-Regular, "Cascadia Code", Menlo, monospace; font-size: 11px; font-weight: 600; fill: #7dd3fc; }
+      .row-val { font-family: ui-monospace, SFMono-Regular, "Cascadia Code", Menlo, monospace; font-size: 11px; }
     </style>
   </defs>
 

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 246" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="246" viewBox="0 0 860 246" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <linearGradient id="heatBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0a0e14" />
@@ -16,11 +15,11 @@
       .c { animation: cellFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
       .label-month { fill: #7d8590; font-size: 10px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
       .label-day { fill: #7d8590; font-size: 9px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
-      .title-text { fill: #f0f6fc; font-size: 11.5px; font-weight: 600; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
-      .badge-stats { fill: #3fb950; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
+      .title-text { fill: #f0f6fc; font-size: 11.5px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .badge-stats { fill: #3fb950; font-size: 9px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, monospace; }
       .legend-text { fill: #7d8590; font-size: 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; }
       .chip-title { fill: #7d8590; font-size: 9.5px; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; letter-spacing: 0.5px; }
-      .chip-val { fill: #f0f6fc; font-size: 13px; font-weight: 700; font-family: ui-monospace, "SF Mono", monospace; }
+      .chip-val { fill: #f0f6fc; font-size: 13px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, monospace; }
       .accent-green { fill: #3fb950; }
       .accent-gold { fill: #d29922; }
       .accent-blue { fill: #58a6ff; }

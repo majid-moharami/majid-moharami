@@ -12,21 +12,17 @@ const HEIGHT = 470;
 const TITLEBAR_H = 36;
 const TAB_H = 28;
 
-const BG = "#0a0e14";
 const BG_CARD = "#0d1117";
-const BG_EDITOR = "#0d1117";
 const BORDER_COLOR = "#30363d";
 const LINE_NUM_COLOR = "#484f58";
 
 // Kotlin IntelliJ Syntax colors
-const KW = "#ff7b72";      // package, import, fun, val (Red/Pink)
-const ANNO = "#d2a8ff";    // @Composable (Purple)
-const TYPE = "#79c0ff";    // Developer, Architecture (Light Blue)
-const STR = "#a5d6ff";     // "Majid Moharami" (Cyan/Blue)
-const PROP = "#e6edf3";    // name, role (White)
-const CALL = "#d2a8ff";    // listOf, RenderExcellence (Purple)
-const CMT = "#8b949e";     // // 20M+ MAU (Gray)
-const PUNCT = "#e6edf3";
+const KW = "#ff7b72";      // package, import, fun, val
+const ANNO = "#d2a8ff";    // @Composable
+const TYPE = "#79c0ff";    // Developer
+const STR = "#a5d6ff";     // Strings
+const CALL = "#d2a8ff";    // listOf, BuildGreatApps
+const CMT = "#8b949e";     // Comments
 
 const CODE_LINES = [
   `<tspan fill="${KW}">package</tspan> dev.majid.profile`,
@@ -70,8 +66,7 @@ function buildCodeSvg() {
 
   const cursorY = startY + (CODE_LINES.length - 1) * lineH;
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${HEIGHT}" width="100%" height="100%">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
   <defs>
     <linearGradient id="codeBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0a0e14" />
@@ -89,13 +84,12 @@ function buildCodeSvg() {
       .bg { fill: url(#codeBg); stroke: ${BORDER_COLOR}; stroke-width: 1; rx: 10px; }
       .titlebar { fill: ${BG_CARD}; }
       .tab-active { fill: #161b22; stroke: ${BORDER_COLOR}; stroke-width: 1; }
-      .tab-inactive { fill: transparent; }
-      .title-text { fill: #8b949e; font-size: 11px; font-weight: 500; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
-      .tab-text { fill: #f0f6fc; font-size: 11px; font-weight: 600; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
-      .tab-text-inactive { fill: #8b949e; font-size: 11px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
-      .line-num { fill: ${LINE_NUM_COLOR}; font-size: 11px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+      .title-text { fill: #8b949e; font-size: 11px; font-weight: 500; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .tab-text { fill: #f0f6fc; font-size: 11px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .tab-text-inactive { fill: #8b949e; font-size: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .line-num { fill: ${LINE_NUM_COLOR}; font-size: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
       .code-row { animation: rowFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-      .code-text { font-family: ui-monospace, "SF Mono", "Fira Code", "Cascadia Code", Menlo, monospace; font-size: 11.5px; fill: #e6edf3; }
+      .code-text { font-family: ui-monospace, SFMono-Regular, "Fira Code", "Cascadia Code", Menlo, monospace; font-size: 11.5px; fill: #e6edf3; }
       .cursor { fill: #58a6ff; animation: blink 1s step-end infinite; }
       .tag-android { fill: #3ddc84; font-size: 9px; font-weight: 700; font-family: ui-monospace, monospace; }
     </style>

@@ -1,15 +1,15 @@
 <div align="center">
 
 <h3><code>majid@github ~ $ ./contributions.sh</code></h3>
-<img src="https://raw.githubusercontent.com/majid-moharami/majid-moharami/main/contrib-heatmap.svg" width="860" alt="Majid Moharami Contribution Graph" />
+<img src="./contrib-heatmap.svg" width="860" alt="Majid Moharami Contribution Graph" />
 
 <br><br>
 
 <h3><code>majid@github ~ $ whoami</code></h3>
 <table>
   <tr>
-    <td valign="top"><img src="https://raw.githubusercontent.com/majid-moharami/majid-moharami/main/code-window.svg" width="420" alt="Majid Moharami Android Studio Kotlin Code" /></td>
-    <td valign="top"><img src="https://raw.githubusercontent.com/majid-moharami/majid-moharami/main/info-card.svg" width="420" alt="Majid Moharami Fastfetch System Info" /></td>
+    <td valign="top"><img src="./code-window.svg" width="420" alt="Majid Moharami Android Studio Kotlin Code" /></td>
+    <td valign="top"><img src="./info-card.svg" width="420" alt="Majid Moharami Fastfetch System Info" /></td>
   </tr>
 </table>
 

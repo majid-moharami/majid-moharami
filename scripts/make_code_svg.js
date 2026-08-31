@@ -114,7 +114,7 @@ function buildCodeSvg() {
   <circle cx="46" cy="${TITLEBAR_H / 2}" r="5" fill="#27c93f" />
 
   <!-- Title -->
-  <text x="${WIDTH / 2}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">Android Studio &bull; MainActivity.kt</text>
+  <text x="${WIDTH / 2}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">Android Studio • MainActivity.kt</text>
   <text x="${WIDTH - 18}" y="${TITLEBAR_H / 2 + 4}" text-anchor="end" class="tag-android">[ KOTLIN ]</text>
 
   <!-- Tabs Bar -->
@@ -124,7 +124,7 @@ function buildCodeSvg() {
   <!-- Tab 1 Active -->
   <rect x="14" y="${TITLEBAR_H + 4}" width="125" height="${TAB_H - 4}" rx="4" class="tab-active" />
   <text x="24" y="${TITLEBAR_H + 19}" class="tab-text">MainActivity.kt</text>
-  <text x="126" y="${TITLEBAR_H + 18}" fill="#8b949e" font-size="10px" font-family="sans-serif">&times;</text>
+  <text x="126" y="${TITLEBAR_H + 18}" fill="#8b949e" font-size="10px" font-family="sans-serif">×</text>
 
   <!-- Tab 2 Inactive -->
   <text x="155" y="${TITLEBAR_H + 19}" class="tab-text-inactive">Architecture.kt</text>

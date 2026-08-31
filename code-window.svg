@@ -42,7 +42,7 @@
   <circle cx="46" cy="18" r="5" fill="#27c93f" />
 
   <!-- Title -->
-  <text x="210" y="22" text-anchor="middle" class="title-text">Android Studio &bull; MainActivity.kt</text>
+  <text x="210" y="22" text-anchor="middle" class="title-text">Android Studio • MainActivity.kt</text>
   <text x="402" y="22" text-anchor="end" class="tag-android">[ KOTLIN ]</text>
 
   <!-- Tabs Bar -->
@@ -52,7 +52,7 @@
   <!-- Tab 1 Active -->
   <rect x="14" y="40" width="125" height="24" rx="4" class="tab-active" />
   <text x="24" y="55" class="tab-text">MainActivity.kt</text>
-  <text x="126" y="54" fill="#8b949e" font-size="10px" font-family="sans-serif">&times;</text>
+  <text x="126" y="54" fill="#8b949e" font-size="10px" font-family="sans-serif">×</text>
 
   <!-- Tab 2 Inactive -->
   <text x="155" y="55" class="tab-text-inactive">Architecture.kt</text>

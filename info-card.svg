@@ -34,7 +34,7 @@
   <circle cx="46" cy="18" r="5" fill="#27c93f" />
 
   <!-- Title & Status -->
-  <text x="210" y="22" text-anchor="middle" class="title-text">Terminal &bull; fastfetch</text>
+  <text x="210" y="22" text-anchor="middle" class="title-text">Terminal • fastfetch</text>
   <text x="402" y="22" text-anchor="end" class="badge-sys">[ ANDROID ]</text>
 
   <!-- Content -->

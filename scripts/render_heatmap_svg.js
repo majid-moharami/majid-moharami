@@ -199,7 +199,7 @@ function renderSvg(data) {
   <circle cx="46" cy="${TITLEBAR_H / 2}" r="5" fill="#27c93f" />
 
   <!-- Terminal Title & Status -->
-  <text x="${WIDTH / 2}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">⚡ contributions.sh &bull; ${yearRange}</text>
+  <text x="${WIDTH / 2}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">⚡ contributions.sh • ${yearRange}</text>
   <text x="${WIDTH - 20}" y="${TITLEBAR_H / 2 + 4}" text-anchor="end" class="badge-stats">[ ${stats.total} COMMITS ]</text>
 
   <!-- Month & Day Labels -->

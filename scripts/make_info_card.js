@@ -109,7 +109,7 @@ function buildInfoCardSvg() {
   <circle cx="46" cy="${TITLEBAR_H / 2}" r="5" fill="#27c93f" />
 
   <!-- Title & Status -->
-  <text x="${WIDTH / 2}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">Terminal &bull; fastfetch</text>
+  <text x="${WIDTH / 2}" y="${TITLEBAR_H / 2 + 4}" text-anchor="middle" class="title-text">Terminal • fastfetch</text>
   <text x="${WIDTH - 18}" y="${TITLEBAR_H / 2 + 4}" text-anchor="end" class="badge-sys">[ ANDROID ]</text>
 
   <!-- Content -->

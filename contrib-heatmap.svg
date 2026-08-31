@@ -40,7 +40,7 @@
   <circle cx="46" cy="18" r="5" fill="#27c93f" />
 
   <!-- Terminal Title & Status -->
-  <text x="430" y="22" text-anchor="middle" class="title-text">⚡ contributions.sh &bull; 2025 - 2026</text>
+  <text x="430" y="22" text-anchor="middle" class="title-text">⚡ contributions.sh • 2025 - 2026</text>
   <text x="840" y="22" text-anchor="end" class="badge-stats">[ 155 COMMITS ]</text>
 
   <!-- Month & Day Labels -->

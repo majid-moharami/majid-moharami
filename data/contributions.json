@@ -1,44 +1,16 @@
 {
   "username": "majid-moharami",
-  "fetchedAt": "2026-09-12T10:53:16.643Z",
+  "fetchedAt": "2026-09-13T11:58:12.861Z",
   "stats": {
-    "total": 216,
-    "currentStreak": 18,
-    "longestStreak": 18,
+    "total": 217,
+    "currentStreak": 19,
+    "longestStreak": 19,
     "maxDay": {
       "date": "2026-08-31",
       "count": 28
     }
   },
   "days": [
-    {
-      "date": "2025-09-07",
-      "count": 0
-    },
-    {
-      "date": "2025-09-08",
-      "count": 0
-    },
-    {
-      "date": "2025-09-09",
-      "count": 0
-    },
-    {
-      "date": "2025-09-10",
-      "count": 0
-    },
-    {
-      "date": "2025-09-11",
-      "count": 0
-    },
-    {
-      "date": "2025-09-12",
-      "count": 0
-    },
-    {
-      "date": "2025-09-13",
-      "count": 0
-    },
     {
       "date": "2025-09-14",
       "count": 0
@@ -1493,6 +1465,10 @@
     },
     {
       "date": "2026-09-12",
+      "count": 1
+    },
+    {
+      "date": "2026-09-13",
       "count": 0
     }
   ]
